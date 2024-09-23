@@ -17,17 +17,12 @@ int NumberCount(int _Value)
 
 void NumberToString(char* Buffer, int BufferSize, int _Value)
 {
-    // if (NumberCount(_Value) + 1 > BufferSize) {
-    //     return;
-    // }
-    // sprintf_s(Buffer, BufferSize, "%d", _Value);
-
     const int BASE = 10;
     int cnt = NumberCount(_Value) - 1;
     int idx = 0;
 
-    for (int i = cnt; i >= 0; i--) {
-        int denorm = static_cast<int>(pow(BASE, i));
+    while (cnt >= 0) {
+        int denorm = static_cast<int>(pow(BASE, cnt));
         int norm = _Value / denorm;
         _Value = _Value % denorm;
 
@@ -37,7 +32,10 @@ void NumberToString(char* Buffer, int BufferSize, int _Value)
         if (idx >= (BufferSize - 1)) {
             break;
         }
+
+        cnt = NumberCount(_Value) - 1;
     }
+
     Buffer[idx] = 0;
 }
 
