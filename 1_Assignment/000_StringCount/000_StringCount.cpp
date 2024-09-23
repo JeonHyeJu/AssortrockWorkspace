@@ -7,10 +7,6 @@ int StringCount(const char* const _Str)
     int Count = 0;
     while (_Str[Count])
     {
-        if (_Str[Count] == '\0') {
-            break;
-        }
-
         Count++;
     }
 

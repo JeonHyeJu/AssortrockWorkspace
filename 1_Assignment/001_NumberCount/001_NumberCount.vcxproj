@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{370dc524-8805-4919-b3c2-2c6b9815878a}</ProjectGuid>
-    <RootNamespace>My001Assignment</RootNamespace>
+    <ProjectGuid>{3a78aae8-3388-40ae-9a41-da9762825e03}</ProjectGuid>
+    <RootNamespace>My001NumberCount</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="001_Assignment.cpp" />
+    <ClCompile Include="001_NumberCount.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
