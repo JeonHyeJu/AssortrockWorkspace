@@ -5,9 +5,9 @@
 int NumberCount(int _Value)
 {
     const int BASE = 10;
-    int Result = 1;
+    int Result = 0;
 
-    while (_Value >= BASE)
+    while (_Value)
     {
         _Value /= BASE;
         Result += 1;
@@ -34,10 +34,11 @@ void NumberToString(char* Buffer, int BufferSize, int _Value)
         char val = norm + '0';
         Buffer[idx++] = val;
 
-        if (idx >= BufferSize) {
+        if (idx >= (BufferSize - 1)) {
             break;
         }
     }
+    Buffer[idx] = 0;
 }
 
 int main()
