@@ -2,7 +2,7 @@
 
 // with division
 // 0: X, -: X
-int StringCount(int _Value)
+int NumberCount(int _Value)
 {
     const int BASE = 10;
     int Result = 1;
@@ -17,7 +17,7 @@ int StringCount(int _Value)
 
 void NumberToString(char* Buffer, int BufferSize, int _Value)
 {
-    if (StringCount(_Value) + 1 > BufferSize) {
+    if (NumberCount(_Value) + 1 > BufferSize) {
         return;
     }
     sprintf_s(Buffer, BufferSize, "%d", _Value);
@@ -25,11 +25,11 @@ void NumberToString(char* Buffer, int BufferSize, int _Value)
 
 int main()
 {
-    int Result0 = StringCount(12358);
-    int Result1 = StringCount(5258);
-    int Result2 = StringCount(525);
-    int Result3 = StringCount(52);
-    int Result4 = StringCount(5);
+    int Result0 = NumberCount(12358);
+    int Result1 = NumberCount(5258);
+    int Result2 = NumberCount(525);
+    int Result3 = NumberCount(52);
+    int Result4 = NumberCount(5);
     std::cout << "Result0: " << Result0 << std::endl;
     std::cout << "Result1: " << Result1 << std::endl;
     std::cout << "Result2: " << Result2 << std::endl;
