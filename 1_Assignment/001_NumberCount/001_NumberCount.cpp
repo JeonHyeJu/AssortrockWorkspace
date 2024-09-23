@@ -1,34 +1,16 @@
 ﻿#include <iostream>
 
-double Power(unsigned int _base, unsigned int _exp)
-{
-    if (_base == 0) return 0;
-    if (_base == 1) return 1;
-    if (_exp == 0) return 1;
-
-    double result = static_cast<double>(_base);
-    for (unsigned int i = 0; i < _exp - 1; i++) {
-        result = static_cast<double>(result * _base);
-    }
-
-    return result;
-}
-
 // with division
 // 0: X, -: X
 int StringCount(int _Value)
 {
-    const int BASE = 10;
-    int exp = 0;
-    double comparator = 1;
-
-    while (_Value >= comparator)
+    int Result = 1;
+    while (_Value >= 10)
     {
-        exp = exp + 1;
-        comparator = Power(BASE, exp);
+        _Value /= 10;
+        Result += 1;
     }
-
-    return exp;
+    return Result;
 }
 
 void NumberToString(char* Buffer, int BufferSize, int _Value)
@@ -36,7 +18,6 @@ void NumberToString(char* Buffer, int BufferSize, int _Value)
     if (StringCount(_Value) + 1 > BufferSize) {
         return;
     }
-
     sprintf_s(Buffer, BufferSize, "%d", _Value);
 }
 
