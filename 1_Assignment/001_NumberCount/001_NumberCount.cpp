@@ -4,10 +4,12 @@
 // 0: X, -: X
 int StringCount(int _Value)
 {
+    const int BASE = 10;
     int Result = 1;
-    while (_Value >= 10)
+
+    while (_Value >= BASE)
     {
-        _Value /= 10;
+        _Value /= BASE;
         Result += 1;
     }
     return Result;
