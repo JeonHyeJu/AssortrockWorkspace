@@ -109,9 +109,9 @@ void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp,
     _DefHp -= _Att;
 }
 
-int getOrder(int start, int end)
+int getOrder(int speed)
 {
-    return start + rand() * (end+1) / (RAND_MAX+1);
+    return rand() % speed + 1;
 }
 
 int main()
@@ -128,8 +128,8 @@ int main()
     {
         char Input = ' ';
 
-        int playerOrder = getOrder(0, PLAYER_MAX_ORDER);
-        int monsterOrder = getOrder(0, MONSTER_MAX_ORDER);
+        int playerOrder = getOrder(PLAYER_MAX_ORDER);
+        int monsterOrder = getOrder(MONSTER_MAX_ORDER);
 
         system("cls");
         if (playerOrder > monsterOrder) {
