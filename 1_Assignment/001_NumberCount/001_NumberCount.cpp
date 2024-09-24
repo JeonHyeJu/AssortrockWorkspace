@@ -17,6 +17,9 @@ int NumberCount(int _Value)
 
 void NumberToString(char* Buffer, int BufferSize, int _Value)
 {
+    if (!Buffer) return;
+    if (BufferSize == 0) return;
+
     const int BASE = 10;
     int cnt = NumberCount(_Value) - 1;
     int idx = 0;
@@ -26,8 +29,7 @@ void NumberToString(char* Buffer, int BufferSize, int _Value)
         int norm = _Value / denorm;
         _Value = _Value % denorm;
 
-        char val = norm + '0';
-        Buffer[idx++] = val;
+        Buffer[idx++] = norm + '0';
 
         if (idx >= (BufferSize - 1)) {
             break;
