@@ -95,7 +95,7 @@ void MonsterStatusRender()
 // 함수는 한번에 1가지 일을 할수록 좋다.
 
 // 랜더링
-void showDamage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
+void showDamage(const char* const _AttName, const char* const _DefName, int _Att)
 {
     printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttName, _DefName, _Att);
 }
@@ -130,8 +130,8 @@ int main()
         PlayerStatusRender();
         MonsterStatusRender();
 
-        showDamage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
-        showDamage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
+        showDamage(PlayerName, MonsterName, PlayerAtt);
+        showDamage(MonsterName, PlayerName, MonsterAtt);
         
         Input = _getch();
     }
