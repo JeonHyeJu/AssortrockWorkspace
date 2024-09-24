@@ -24,7 +24,7 @@ void PlusString(char* _Buffer, int _BufferSize, const char* const _Value0, const
 
 int main()
 {
-    char Arr[100] = {};
-    PlusString(Arr, 100, "AAAA", "BBBB");
-    std::cout << "PlusString: " << Arr << std::endl;
+    //char Arr[100] = {};
+    //PlusString(Arr, 100, "AAAA", "BBBB");
+    //std::cout << "PlusString: " << Arr << std::endl;
 }
