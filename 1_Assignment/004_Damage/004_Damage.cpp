@@ -123,8 +123,6 @@ int main()
         char Input = ' ';
 
         system("cls");
-        int prevMonsterHp = MonsterHp;
-        int prevPlayerHp= PlayerHp;
 
         Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
         Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
@@ -132,8 +130,8 @@ int main()
         PlayerStatusRender();
         MonsterStatusRender();
 
-        showDamage(PlayerName, MonsterName, prevMonsterHp, PlayerAtt);
-        showDamage(MonsterName, PlayerName, prevPlayerHp, MonsterAtt);
+        showDamage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
+        showDamage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
         
         Input = _getch();
     }
