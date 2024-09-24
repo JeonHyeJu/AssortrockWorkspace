@@ -111,7 +111,7 @@ void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp,
 
 int getOrder(int start, int end)
 {
-    return start + rand() * (end) / (RAND_MAX);
+    return start + rand() * (end+1) / (RAND_MAX+1);
 }
 
 int main()
