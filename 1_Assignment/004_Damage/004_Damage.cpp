@@ -93,23 +93,23 @@ void showStatus()
 {
     PlayerStatusRender();
     MonsterStatusRender();
-    
 }
 
 // 클래스의 필요성
 // 함수는 다양한 상황에서 쓸수있게 만들수록 좋다.
 // 함수는 작은 기능을 많이 만들고 
 // 함수는 한번에 1가지 일을 할수록 좋다.
-void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
-{
-    system("cls");
 
+void showDamage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
+{
     // 랜더링
     printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttName, _DefName, _Att);
+}
 
+void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
+{
     // 게임 로직
     _DefHp -= _Att;
-    showStatus();
 }
 
 int main()
@@ -128,10 +128,20 @@ int main()
         
         char Input = ' ';
 
+        system("cls");
+
+        int prevHp = MonsterHp;
         Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
+        showStatus();
+        showDamage(PlayerName, MonsterName, prevHp, PlayerAtt);
         Input = _getch();
 
+        system("cls");
+
+        prevHp = PlayerHp;
         Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
+        showStatus();
+        showDamage(MonsterName, PlayerName, prevHp, MonsterAtt);
         Input = _getch();
     }
 
