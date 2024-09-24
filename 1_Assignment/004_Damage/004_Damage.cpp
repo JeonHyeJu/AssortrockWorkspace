@@ -111,7 +111,7 @@ void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp,
 
 int getOrder(int start, int end)
 {
-    return start + rand() * (end+1) / (RAND_MAX + 1);
+    return start + rand() * (end) / (RAND_MAX);
 }
 
 int main()
@@ -132,19 +132,36 @@ int main()
         int monsterOrder = getOrder(0, MONSTER_MAX_ORDER);
 
         system("cls");
-
         if (playerOrder > monsterOrder) {
             Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
             PlayerStatusRender();
             MonsterStatusRender();
             printf_s("%s 선공 (%d:%d)\n", PlayerName, playerOrder, monsterOrder);
             showDamage(PlayerName, MonsterName, PlayerAtt);
+            Input = _getch();
+
+            system("cls");
+            Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
+            PlayerStatusRender();
+            MonsterStatusRender();
+            printf_s("%s 선공 (%d:%d)\n", PlayerName, playerOrder, monsterOrder);
+            showDamage(PlayerName, MonsterName, PlayerAtt);
+            showDamage(MonsterName, PlayerName, MonsterAtt);
         } else if (playerOrder < monsterOrder) {
             Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
             PlayerStatusRender();
             MonsterStatusRender();
             printf_s("%s 선공 (%d:%d)\n", MonsterName, playerOrder, monsterOrder);
             showDamage(MonsterName, PlayerName, MonsterAtt);
+            Input = _getch();
+
+            system("cls");
+            Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
+            PlayerStatusRender();
+            MonsterStatusRender();
+            printf_s("%s 선공 (%d:%d)\n", MonsterName, playerOrder, monsterOrder);
+            showDamage(MonsterName, PlayerName, MonsterAtt);
+            showDamage(PlayerName, MonsterName, PlayerAtt);
         } else {    // same
             printf_s("동일 숫자. 재실행");
             continue;
