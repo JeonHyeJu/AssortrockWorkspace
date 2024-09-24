@@ -22,20 +22,23 @@ void NumberToString(char* Buffer, int BufferSize, int _Value)
 
     const int BASE = 10;
     int cnt = NumberCount(_Value) - 1;
+    int denorm = 1;
     int idx = 0;
 
-    while (cnt >= 0) {
-        int denorm = static_cast<int>(pow(BASE, cnt));
+    for (int i = 0; i < cnt; i++) {
+        denorm *= BASE;
+    }
+
+    while (denorm > 0) {
         int norm = _Value / denorm;
         _Value = _Value % denorm;
+        denorm /= 10;
 
         Buffer[idx++] = norm + '0';
 
         if (idx >= (BufferSize - 1)) {
             break;
         }
-
-        cnt = NumberCount(_Value) - 1;
     }
 
     Buffer[idx] = 0;
