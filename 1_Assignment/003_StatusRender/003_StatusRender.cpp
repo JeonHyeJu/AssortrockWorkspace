@@ -26,7 +26,4 @@ int main()
 
     char buffer2[100] = "TesterABCDEFGHIJK";
     StatusRender(buffer2, 100, 100);
-
-    char buffer3[100] = "TesterABCDEdddddddddddddddddddddddddddddddddFGHIJKdddddddddddddddddddddddddddddddd";
-    StatusRender(buffer3, 100, 100);
 }
