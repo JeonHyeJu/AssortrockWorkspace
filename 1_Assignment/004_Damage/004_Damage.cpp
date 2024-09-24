@@ -94,15 +94,24 @@ void MonsterStatusRender()
 // 함수는 작은 기능을 많이 만들고 
 // 함수는 한번에 1가지 일을 할수록 좋다.
 
+// 랜더링
 void showDamage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
 {
-    // 랜더링
+    if (_DefHp <= 0) {
+        printf_s("Dead..");
+        return;
+    }
+
     printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttName, _DefName, _Att);
 }
 
+// 게임 로직
 void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
 {
-    // 게임 로직
+    if (_DefHp <= 0) {
+        return;
+    }
+    
     _DefHp -= _Att;
 }
 
