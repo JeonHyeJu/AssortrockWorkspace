@@ -129,19 +129,17 @@ int main()
         char Input = ' ';
 
         system("cls");
+        int prevMonsterHp = MonsterHp;
+        int prevPlayerHp= PlayerHp;
 
-        int prevHp = MonsterHp;
         Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
-        showStatus();
-        showDamage(PlayerName, MonsterName, prevHp, PlayerAtt);
-        Input = _getch();
-
-        system("cls");
-
-        prevHp = PlayerHp;
         Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
+
         showStatus();
-        showDamage(MonsterName, PlayerName, prevHp, MonsterAtt);
+
+        showDamage(PlayerName, MonsterName, prevMonsterHp, PlayerAtt);
+        showDamage(MonsterName, PlayerName, prevPlayerHp, MonsterAtt);
+        
         Input = _getch();
     }
 
