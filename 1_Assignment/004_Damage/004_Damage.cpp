@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 const int LINECOUNT = 50;
 
@@ -106,34 +109,47 @@ void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp,
     _DefHp -= _Att;
 }
 
+int getOrder(int start, int end)
+{
+    return start + rand() * (end+1) / (RAND_MAX + 1);
+}
+
 int main()
 {
-    // char Test0[100] = "Player";
-    //char Test1[50] = Test0;
-    //Test1 = Test0*
+    srand(time(NULL));
 
     CreatePlayer("1", 10, 100);
     CreateMonster("Orc", 10, 50);
 
+    const int PLAYER_MAX_ORDER = 19;
+    const int MONSTER_MAX_ORDER = 9;
+
     while (true)
     {
-        // 화면 전체를 지워라.
-        // 콘솔창에 다른 프로그램를 실행해주는 프로그램
-        
         char Input = ' ';
+
+        int playerOrder = getOrder(0, PLAYER_MAX_ORDER);
+        int monsterOrder = getOrder(0, MONSTER_MAX_ORDER);
 
         system("cls");
 
-        Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
-        Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
+        if (playerOrder > monsterOrder) {
+            Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
+            PlayerStatusRender();
+            MonsterStatusRender();
+            printf_s("%s 선공 (%d:%d)\n", PlayerName, playerOrder, monsterOrder);
+            showDamage(PlayerName, MonsterName, PlayerAtt);
+        } else if (playerOrder < monsterOrder) {
+            Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
+            PlayerStatusRender();
+            MonsterStatusRender();
+            printf_s("%s 선공 (%d:%d)\n", MonsterName, playerOrder, monsterOrder);
+            showDamage(MonsterName, PlayerName, MonsterAtt);
+        } else {    // same
+            printf_s("동일 숫자. 재실행");
+            continue;
+        }
 
-        PlayerStatusRender();
-        MonsterStatusRender();
-
-        showDamage(PlayerName, MonsterName, PlayerAtt);
-        showDamage(MonsterName, PlayerName, MonsterAtt);
-        
         Input = _getch();
     }
-
 }
