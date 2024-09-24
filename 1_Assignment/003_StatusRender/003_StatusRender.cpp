@@ -3,9 +3,12 @@
 const int LINECOUNT = 50;
 void StatusRender(const char* _Name, int _Att, int _HP)
 {
-    printf_s("%s ", _Name);
+    if (!_Name) return;
 
-    int size = LINECOUNT - static_cast<int>(strlen(_Name)) - 1;
+    int strSize = static_cast<int>(strlen(_Name));
+    int size = LINECOUNT - strSize - 1;
+
+    printf_s("%s ", _Name);
     for (int i = 0; i < size; i += 1)
     {
         printf_s("-");
