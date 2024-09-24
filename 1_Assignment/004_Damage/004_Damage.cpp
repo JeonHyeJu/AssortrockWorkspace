@@ -109,8 +109,8 @@ void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp,
 int main()
 {
     // char Test0[100] = "Player";
-    /*char Test1[50] = Test0;
-    Test1 = Test0*/;
+    //char Test1[50] = Test0;
+    //Test1 = Test0*
 
     CreatePlayer("1", 10, 100);
     CreateMonster("Orc", 10, 50);
