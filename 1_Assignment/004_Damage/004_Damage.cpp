@@ -89,12 +89,6 @@ void MonsterStatusRender()
     StatusRender(MonsterName, MonsterAtt, MonsterHp);
 }
 
-void showStatus()
-{
-    PlayerStatusRender();
-    MonsterStatusRender();
-}
-
 // 클래스의 필요성
 // 함수는 다양한 상황에서 쓸수있게 만들수록 좋다.
 // 함수는 작은 기능을 많이 만들고 
@@ -135,7 +129,8 @@ int main()
         Damage(PlayerName, MonsterName, MonsterHp, PlayerAtt);
         Damage(MonsterName, PlayerName, PlayerHp, MonsterAtt);
 
-        showStatus();
+        PlayerStatusRender();
+        MonsterStatusRender();
 
         showDamage(PlayerName, MonsterName, prevMonsterHp, PlayerAtt);
         showDamage(MonsterName, PlayerName, prevPlayerHp, MonsterAtt);
