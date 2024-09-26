@@ -107,7 +107,14 @@ int main()
     Monster NewMonster;
     NewMonster.DamageLogic(NewPlayer);
 
-    // NewPlayer.
+    // test
+    while (true) {
+        printf_s("Damage: %d\n", NewPlayer.GetDamage());
+        char temp = _getch();
+        if (temp == 'q') break;
+    }
+
+    return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
