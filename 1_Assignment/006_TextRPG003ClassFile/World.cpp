@@ -2,7 +2,7 @@
 #include "FightZone.h"
 #include "Town.h"
 #include <conio.h>
-
+#include "Player.h"
 
 void UWorld::InPlayer(class UPlayer& _Player)
 {
@@ -34,7 +34,6 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		case 'b':
 		case 'B':
 			hasName = false;
-			memset(InputName, '\0', sizeof(char) * 100);
 			break;
 		default:
 			printf_s("잘못된 선택입니다. 다시 선택해주세요\n");
@@ -43,6 +42,8 @@ void UWorld::InPlayer(class UPlayer& _Player)
 			break;
 		}
 	}
+
+	_Player.SetName(InputName);
 
 	// 마지막맵까지 여기서 이 방식으로 가면
 	// 마을에 있을때 FightZone은 없어도 된다.
