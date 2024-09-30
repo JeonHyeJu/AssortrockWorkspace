@@ -21,18 +21,19 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		printf_s("당신의 이름은 %s입니다. 결정하시겠습니까?\n", InputName);
 		printf_s("a. 결정\n");
 		printf_s("b. 재입력\n");
+
 		int Select = _getch();
-		bool IsEnd = false;
+
 		switch (Select)
 		{
 		case 'a':
 		case 'A':
 			hasName = true;
-			IsEnd = true;
 			break;
 		case 'b':
 		case 'B':
 			hasName = false;
+			memset(InputName, '\0', sizeof(char) * 100);
 			continue;
 		default:
 			printf_s("잘못된 선택입니다. 다시 선택해주세요\n");
@@ -41,10 +42,7 @@ void UWorld::InPlayer(class UPlayer& _Player)
 			continue;
 		}
 
-		if (true == IsEnd)
-		{
-			break;
-		}
+		break;
 	}
 
 	// 마지막맵까지 여기서 이 방식으로 가면
@@ -64,7 +62,4 @@ void UWorld::InPlayer(class UPlayer& _Player)
 	{
 		TownZone.InPlayer(_Player);
 	}
-
-
-
 }
