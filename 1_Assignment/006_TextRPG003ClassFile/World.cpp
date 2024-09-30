@@ -8,8 +8,9 @@ void UWorld::InPlayer(class UPlayer& _Player)
 {
 	char InputName[100] = {0,};
 	bool hasName = false;
+	int Select = -1;
 
-	while (true)
+	while (Select != 'a')
 	{
 		system("cls");
 
@@ -22,7 +23,7 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		printf_s("a. 결정\n");
 		printf_s("b. 재입력\n");
 
-		int Select = _getch();
+		Select = _getch();
 
 		switch (Select)
 		{
@@ -34,15 +35,13 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		case 'B':
 			hasName = false;
 			memset(InputName, '\0', sizeof(char) * 100);
-			continue;
+			break;
 		default:
 			printf_s("잘못된 선택입니다. 다시 선택해주세요\n");
 			char _ = _getch();
 			hasName = true;
-			continue;
+			break;
 		}
-
-		break;
 	}
 
 	// 마지막맵까지 여기서 이 방식으로 가면
