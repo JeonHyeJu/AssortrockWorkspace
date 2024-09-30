@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{272146d3-7322-49e4-a848-2932254581e4}</ProjectGuid>
-    <RootNamespace>My005DamageMinMax</RootNamespace>
+    <ProjectGuid>{adac5a93-943b-4584-b3f9-66ad5dc26f57}</ProjectGuid>
+    <RootNamespace>TextRPG003ClassFile</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="005_DamageMinMax.cpp" />
-    <ClCompile Include="Temp.cpp" />
+    <ClCompile Include="EngineConst.cpp" />
+    <ClCompile Include="EngineDebug.cpp" />
+    <ClCompile Include="FightUnit.cpp" />
+    <ClCompile Include="FightZone.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="StatusUnit.cpp" />
+    <ClCompile Include="TextRPG003ClassFile.cpp" />
+    <ClCompile Include="Town.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Zone.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Temp.h" />
+    <ClInclude Include="EngineConst.h" />
+    <ClInclude Include="EngineDebug.h" />
+    <ClInclude Include="FightUnit.h" />
+    <ClInclude Include="FightZone.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="StatusUnit.h" />
+    <ClInclude Include="Town.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="Zone.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

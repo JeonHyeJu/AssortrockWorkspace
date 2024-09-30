@@ -18,5 +18,13 @@
     <ClCompile Include="005_DamageMinMax.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Temp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Temp.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

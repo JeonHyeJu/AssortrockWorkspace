@@ -1,8 +1,11 @@
 ﻿// TextRPG002inheritance.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
 
 #include <iostream>
 #include <conio.h>
+#include <assert.h>
+#include <windows.h>
+
+#include "Temp.h"
 
 //class PlayerSaveData
 //{
@@ -23,57 +26,57 @@ const int NAMELEN = 10;
 class StatusUnit
 {
 protected:
-    char Name[NAMELEN] = "NONE";
-    int Hp = 100;
-    int MinAtt = 10;
-    int MaxAtt = 20;
-    int Speed = 10;
-    int Charm = 0;
+	char Name[NAMELEN] = "NONE";
+	int Hp = 100;
+	int MinAtt = 10;
+	int MaxAtt = 20;
+	int Speed = 10;
+	int Charm = 0;
 
-    // 부모는 자식클래스가 뭔지 절대로 알아서는 안된다.
-    //void Test(FightUnit& _Test)
-    //{
-    //}
+	// 부모는 자식클래스가 뭔지 절대로 알아서는 안된다.
+	//void Test(FightUnit& _Test)
+	//{
+	//}
 };
 
 
 class FightUnit : public StatusUnit
 {
 public:
-    // void DamageLogic(int _Att)
-    // class DamageData;
+	// void DamageLogic(int _Att)
+	// class DamageData;
 
-    // AttackLogic이라고 짓고
+	// AttackLogic이라고 짓고
 
-    //void AttackLogic(FightUnit& _DefUnit)
-    //{
-    //    _DefUnit.Hp -= MinAtt;
-    //}
+	//void AttackLogic(FightUnit& _DefUnit)
+	//{
+	//    _DefUnit.Hp -= MinAtt;
+	//}
 
-    // MinMax
-    int GetDamage() const
-    {
-        // minAtt ~ MaxAtt 사이의 숫자가 리턴되는 함수를 만드세요.
-        int RealAtt = MaxAtt - MinAtt + 1;
-        return MinAtt + rand() % RealAtt;
-    }
+	// MinMax
+	int GetDamage() const
+	{
+		// minAtt ~ MaxAtt 사이의 숫자가 리턴되는 함수를 만드세요.
+		int RealAtt = MaxAtt - MinAtt + 1;
+		return MinAtt + rand() % RealAtt;
+	}
 
-    // 클래스의 레퍼런스를 넣어주는것이 많은게 간단해 집니다.
-    void DamageLogic(const FightUnit& _AttUnit)
-    {
-        // _AttUnit => 나를 공격하려는 상대
-        Hp -= _AttUnit.GetDamage();
-    }
+	// 클래스의 레퍼런스를 넣어주는것이 많은게 간단해 집니다.
+	void DamageLogic(const FightUnit& _AttUnit)
+	{
+		// _AttUnit => 나를 공격하려는 상대
+		Hp -= _AttUnit.GetDamage();
+	}
 
-    void DamageRender(const char* const _AttName, int _Att)
-    {
-        printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttName, Name, _Att);
-    }
+	void DamageRender(const char* const _AttName, int _Att)
+	{
+		printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttName, Name, _Att);
+	}
 
-    const char* GetName() const
-    {
-        return Name;
-    }
+	const char* GetName() const
+	{
+		return Name;
+	}
 
 protected:
 
@@ -94,27 +97,28 @@ class Monster : public FightUnit
 
 };
 
-
 // 게임을 만들다보면
 // 일반적인 로직클래스 Player
 // 리소스 클래스 <= 
 // 데이터 전담클래스가 <= 내부에 변수밖에 없다. 
 // 맴버변수도 public을 사용합니다.
-
 int main()
-{
-    Player NewPlayer;
-    Monster NewMonster;
-    NewMonster.DamageLogic(NewPlayer);
+{	
+	std::cout << "temp " << TEMP << std::endl;
+	return 0;
 
-    // test
-    while (true) {
-        printf_s("Damage: %d\n", NewPlayer.GetDamage());
-        char temp = _getch();
-        if (temp == 'q') break;
-    }
+	Player NewPlayer;
+	Monster NewMonster;
+	NewMonster.DamageLogic(NewPlayer);
 
-    return 0;
+	// test
+	while (true) {
+		printf_s("Damage: %d\n", NewPlayer.GetDamage());
+		char temp = _getch();
+		if (temp == 'q') break;
+	}
+
+	return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
