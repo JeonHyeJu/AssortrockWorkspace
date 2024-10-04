@@ -1,7 +1,7 @@
 #pragma once
 // 상하관계 잘생각하면서
 #include "EngineConst.h"
-#include "EngineDebug.h"
+#include <BaseSystem/EngineDebug.h>
 #include <iostream>
 
 class UObject

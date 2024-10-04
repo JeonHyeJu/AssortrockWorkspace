@@ -5,9 +5,6 @@
     <ClCompile Include="EngineConst.cpp">
       <Filter>0_Base</Filter>
     </ClCompile>
-    <ClCompile Include="EngineDebug.cpp">
-      <Filter>0_Base</Filter>
-    </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>2_Contents\1_Actor</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineConst.h">
-      <Filter>0_Base</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineDebug.h">
       <Filter>0_Base</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">

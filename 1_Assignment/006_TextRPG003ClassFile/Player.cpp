@@ -9,7 +9,7 @@
 // 맴버함수 분할 구현
 UPlayer::UPlayer()
 {
-	std::cout << "플레이어 생성자" << std::endl;
+	// std::cout << "플레이어 생성자" << std::endl;
 }
 
 // 맴버함수를 구현할대는 이러면 그냥 전역함수다.
