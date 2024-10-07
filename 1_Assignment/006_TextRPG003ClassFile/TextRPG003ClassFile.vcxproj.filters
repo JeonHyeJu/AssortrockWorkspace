@@ -35,6 +35,9 @@
     <ClCompile Include="StatusUnit.cpp">
       <Filter>2_Contents\0_ContentsBase</Filter>
     </ClCompile>
+    <ClCompile Include="BlackSmith.cpp">
+      <Filter>2_Contents\2_Map\Building</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="0_Base">
@@ -57,6 +60,9 @@
     </Filter>
     <Filter Include="2_Contents\0_ContentsBase">
       <UniqueIdentifier>{42453fe8-3e4e-4656-9f32-c3d572a0669e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2_Contents\2_Map\Building">
+      <UniqueIdentifier>{8d95b627-1667-4879-80c3-24430aa23e1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="StatusUnit.h">
       <Filter>2_Contents\0_ContentsBase</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackSmith.h">
+      <Filter>2_Contents\2_Map\Building</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

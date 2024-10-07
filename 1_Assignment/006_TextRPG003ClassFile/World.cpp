@@ -81,61 +81,47 @@ void UWorld::ZoneInit()
 	TownZone1.SetName("중급마을");
 	FightZone.SetName("초보사냥터");
 
-	TownZone0.Connecting(&FightZone);
 	TownZone0.InterConnecting(&FightZone);
-
-	// TownZone0.Connecting(&FightZone);
-	// FightZone.Connecting(&TownZone0);
-
-	// 업캐스팅
-	// 같은곳을 2번 
-	// 무조건 디버깅이 최우선
-	// 테스트 코드를 짜야 합니다.
-	// 2번 연결 예외처리 테스트
-	// 귀찮아 
-	//TownZone0.Link(&FightZone);
-	//TownZone0.Link(&FightZone);
-
-	// 테스팅2
-	//UTown Arr[100];
-	//for (size_t i = 0; i < 100; i++)
-	//{
-	//	TownZone0.Link(&Arr[i]);
-	//}
 }
 
 
 void UWorld::PlayerZonePlay(class UPlayer& _Player)
 {
-	ZoneInit();
-	_Player.SetCurZone(0);
-	_Player.SetGold(10000000);
+	// 맵도 준비됐고
+	// 플레이어도 다 된상황에서
+	
+	// 100번지
+	//UTown TownZone0;
+	// __int64 LinkZone[LINKZONEMAX]
+	// [0] 200 => 초보사냥터
+	// 
+	// 150번지 
+	//UTown TownZone1;
+	// 200번지 초보사냥터
+	//UFightZone FightZone;
+	// [0] 100 => 초보마을
+
+
+	// 포인터 8바이트 정수입니다.
+	// 100번지
+	UZone* CurZone = &TownZone0;
 
 	while (true)
 	{
-		int SelectZone = _Player.GetCurZone();
-
-		switch (SelectZone)
-		{
-		case 0:
-			TownZone0.InPlayer(_Player);
-			break;
-		case 1:
-			TownZone1.InPlayer(_Player);
-			break;
-		case 2:
-			FightZone.InPlayer(_Player);
-			break;
-		default:
-			break;
-		}
+		// 포인터는 실체가 아니고
+		// 그냥 주소값일 뿐이다. 언제든지 변경될수 있다.
+		// UZone이지만 자식의 함수들이 실행됩니다.
+		CurZone = CurZone->InPlayer(_Player);
 	}
-
 }
 
-void UWorld::InPlayer(class UPlayer& _Player)
+// 컨텐츠에 필요한 기능
+// UPlayer 싸우고 스킬쓰고 
+// 이름이나 
+void UWorld::PlayerInit(class UPlayer& _Player)
 {
-	// 외부기로 헤더만 있고 CPP는 없다. 
+	// 플레이어를 준비시키는 곳.
+// 외부기로 헤더만 있고 CPP는 없다. 
 	UEngineFile File;
 	File.SetPath("SaveFile.Dat");
 
@@ -153,7 +139,7 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		// 저장할때 가장 쉬운 방법은 크기가 고정되어 있는 것이다.
 		File.Write(Name, NAMELEN);
 	}
-	else 
+	else
 	{
 		File.FileOpen("rb");
 
@@ -161,6 +147,16 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		File.Read(Arr, NAMELEN);
 		_Player.SetName(Arr);
 	}
+}
 
+void UWorld::InPlayer(class UPlayer& _Player)
+{
+	// 알필요가 없다.
+	// 플레이어를 준비시키고
+	PlayerInit(_Player);
+
+	// 맵을 준비시킨다.
+	ZoneInit();
+	// 플레이
 	PlayerZonePlay(_Player);
 }

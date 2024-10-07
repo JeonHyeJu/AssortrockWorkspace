@@ -5,8 +5,16 @@
 class UFightZone : public UZone
 {
 public:
-	int InPlayer(class UPlayer& _Player);
+	UZone* InPlayer(class UPlayer& _Player);
 
 private:
+	// 다형성의 핵심은 코드 관리이다.
+	// 다형성은 상당히 느려집니다.
+	// UMonster* Monsters[10];
+
+	//UOrc Monster0;
+	//UDragon Monster1;
+	//UCobolt Monster2;
+	//UCobolt Monster0;
 };
 

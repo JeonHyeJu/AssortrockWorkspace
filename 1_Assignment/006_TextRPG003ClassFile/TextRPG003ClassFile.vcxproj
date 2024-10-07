@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlackSmith.cpp" />
     <ClCompile Include="ContentsConst.cpp" />
     <ClCompile Include="FightUnit.cpp" />
     <ClCompile Include="FightZone.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Zone.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlackSmith.h" />
     <ClInclude Include="ContentsConst.h" />
     <ClInclude Include="FightUnit.h" />
     <ClInclude Include="FightZone.h" />
