@@ -32,7 +32,7 @@ int UPlayer::GetEquippedAttack()
 {
     if (Weapon)
     {
-        Weapon->GetEnhanceScore();
+        return Weapon->GetEnhanceScore();
     }
     else
     {
