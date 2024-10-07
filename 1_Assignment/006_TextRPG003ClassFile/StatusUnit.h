@@ -51,6 +51,9 @@ public:
 
 
 protected:
+	void TopLine();
+	void BotLine();
+
 	int Hp = 100;
 	int MinAtt = 10;
 	int MaxAtt = 20;

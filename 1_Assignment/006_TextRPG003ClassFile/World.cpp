@@ -84,11 +84,6 @@ void UWorld::ZoneInit()
 	TownZone0.Connecting(&FightZone);
 	TownZone0.InterConnecting(&FightZone);
 
-	// debug
-	std::cout << "TownZone0 -- FightZone ? " << TownZone0.IsConnecting(&FightZone) << std::endl;
-	std::cout << "FightZone -- TownZone0 ? " << FightZone.IsConnecting(&TownZone0) << std::endl;
-	_getch();
-
 	// TownZone0.Connecting(&FightZone);
 	// FightZone.Connecting(&TownZone0);
 

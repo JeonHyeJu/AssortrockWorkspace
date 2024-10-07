@@ -78,6 +78,6 @@ private:
 // #include "Item.h" <= 절대 좋은거 아니다.
 	class Item* Weapon = nullptr;
 	int CurZoneIndex = 0;
-	int EquipAtt = 0;
+	int EquipAtt = 5;
 };
 
