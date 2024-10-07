@@ -14,7 +14,10 @@ bool IsEnhanceSuccessed()
 {
 	const int MIN_VAL = 1;
 	const int MAX_VAL = 2;
-	bool isSuccess = GetProbability(MIN_VAL, MAX_VAL) == MAX_VAL;
+
+	int prob = GetProbability(MIN_VAL, MAX_VAL);
+	bool isSuccess = (prob == MAX_VAL);
+
 	return isSuccess;
 }
 
@@ -47,10 +50,9 @@ void BlackSmith::InPlayer(UPlayer& _Player/*, int& Result*/)
 		
 		switch (Select)
 		{
-		case '1': {
+		case '1':
 			Enhance(_Player);
 			break;
-		}
 		case '2':
 			return;
 		default:
@@ -72,7 +74,8 @@ void BlackSmith::Enhance(UPlayer& _Player)
 
 	const int REQUIRED_MONEY_PER_TRY = 100;
 	Item* playerItem = _Player.GetItem();
-	if (!playerItem) {
+	if (!playerItem)
+	{
 		std::cout << "아이템이 없습니다." << std::endl;
 		_getch();
 		return;
@@ -82,14 +85,16 @@ void BlackSmith::Enhance(UPlayer& _Player)
 	int requiredMoney = (itemEnhanceScore + 1) * REQUIRED_MONEY_PER_TRY;
 	int playerGold = _Player.GetGold();
 
-	if (playerGold < requiredMoney) {
+	if (playerGold < requiredMoney)
+	{
 		std::cout << "돈 없음" << std::endl;
 		_getch();
 		return;
 	}
 
 	bool isMaxEnhanceLevel = playerItem->isMaxEnhanceLevel();
-	if (isMaxEnhanceLevel) {
+	if (isMaxEnhanceLevel)
+	{
 		std::cout << "강화 최고 등급" << std::endl;
 		_getch();
 		return;
@@ -106,10 +111,12 @@ void BlackSmith::Enhance(UPlayer& _Player)
 	}
 	else 
 	{
-		if (itemEnhanceScore >= 6 && itemEnhanceScore <= 10) {
+		if (itemEnhanceScore >= 6 && itemEnhanceScore <= 10)
+		{
 			itemEnhanceScore -= 1;
 		}
-		else if (itemEnhanceScore >= 11) {
+		else if (itemEnhanceScore >= 11)
+		{
 			itemEnhanceScore = 0;
 		}
 		std::cout << "강화 실패" << std::endl;

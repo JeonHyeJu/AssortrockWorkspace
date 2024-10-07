@@ -28,13 +28,13 @@ void UPlayer::Equip(class Item* _Weapon)
     Weapon = _Weapon;
 }
 
-
 int UPlayer::GetEquippedAttack()
 {
     if (Weapon)
     {
         Weapon->GetEnhanceScore();
-    } else
+    }
+    else
     {
         return 0;
     }
