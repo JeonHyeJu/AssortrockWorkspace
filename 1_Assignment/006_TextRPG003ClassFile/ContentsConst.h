@@ -10,7 +10,18 @@
 
 // const가 붙은 전역 변수의 경우에는 선언과 구현을 분리할 필요가 없다.
 // 즉 const가 붙은 전역 변수에는 extern을 사용할 필요가 없다
+
+// 상수값들이 있다.
+//class UContentsConst
+//{
+//public:
+//	const int LINECOUNT = 50;
+//	const int NAMELEN = 20;
+//	const int LINKZONEMAX = 5;
+//};
+
 const int LINECOUNT = 50;
 const int NAMELEN = 20;
+const int LINKZONEMAX = 5;
 
 // }

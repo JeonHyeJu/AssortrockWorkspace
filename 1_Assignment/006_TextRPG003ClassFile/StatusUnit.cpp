@@ -4,6 +4,10 @@
 
 void UStatusUnit::StatusRender()
 {
+    // 상속관계에서 자식이 존재하는데.
+    // 같은 함수를 사용함에도 자식들마다 다른 동작을 해야할때 사용하는 것이
+    // virtual 
+    
     // 디버깅상 받는게 유리해서.
     const char* Name = GetName();
     //printf_s("%s Status", GetName());

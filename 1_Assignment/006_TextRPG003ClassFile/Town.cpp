@@ -20,28 +20,25 @@ int UTown::InPlayer(class UPlayer& _Player)
 
 		switch (Select)
 		{
-		case '0':
-			printf_s("0눌렀습니다.");
-			_getch();
-			continue;
-		case '1':
-			printf_s("1눌렀습니다.");
-			_getch();
-			continue;
 		case '2':
 		{
+			_Player.SetCurZone(Select - '0');
+			// UFightzone FightZone;
+
 			printf_s("2눌렀습니다.");
 			_getch();
+			return 2;
 			break;
 		}
+		case '0':
+		case '1':
 		case '3':
-			printf_s("3눌렀습니다.");
+			printf_s("아직 완성되지 않은 기능입니다.");
 			_getch();
-			break;
+			return 1;
 		default:
-			continue;
+			break;
 		}
-		
-		return Select;
+
 	}
 }

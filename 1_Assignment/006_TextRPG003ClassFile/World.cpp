@@ -55,7 +55,7 @@ void UWorld::PlayerNameSelect(class UPlayer& _Player)
 		default:
 			IsEnd = false;
 			IsNameInput = false;
-			printf_s("잘못된 선택입니다. 다시 선택해주세요\n", InputName);
+			printf_s("잘못된 선택입니다. 다시 선택해주세요\n");
 			_getch();
 			break;
 		}
@@ -71,31 +71,67 @@ void UWorld::PlayerNameSelect(class UPlayer& _Player)
 	_Player.SetName(InputName);
 }
 
-void UWorld::PlayerZonePlay(class UPlayer& _Player)
+void UWorld::ZoneInit()
 {
-	UTown TownZone0;
+	// 지역들을 준비시키것.
+	// 이니셜라이즈 단계
+	// 객체들을 만들고 처음으로 준비시키는 단계
+	// 대부분 딱 1번한다.
 	TownZone0.SetName("초보마을");
-
-	UTown TownZone1;
 	TownZone1.SetName("중급마을");
-
-	UFightZone FightZone;
 	FightZone.SetName("초보사냥터");
 
-	int Result = -1;
+	TownZone0.Connecting(&FightZone);
+	TownZone0.InterConnecting(&FightZone);
+
+	// debug
+	std::cout << "TownZone0 -- FightZone ? " << TownZone0.IsConnecting(&FightZone) << std::endl;
+	std::cout << "FightZone -- TownZone0 ? " << FightZone.IsConnecting(&TownZone0) << std::endl;
+	_getch();
+
+	// TownZone0.Connecting(&FightZone);
+	// FightZone.Connecting(&TownZone0);
+
+	// 업캐스팅
+	// 같은곳을 2번 
+	// 무조건 디버깅이 최우선
+	// 테스트 코드를 짜야 합니다.
+	// 2번 연결 예외처리 테스트
+	// 귀찮아 
+	//TownZone0.Link(&FightZone);
+	//TownZone0.Link(&FightZone);
+
+	// 테스팅2
+	//UTown Arr[100];
+	//for (size_t i = 0; i < 100; i++)
+	//{
+	//	TownZone0.Link(&Arr[i]);
+	//}
+}
+
+
+void UWorld::PlayerZonePlay(class UPlayer& _Player)
+{
+	ZoneInit();
+	_Player.SetCurZone(0);
+	_Player.SetGold(10000000);
+
 	while (true)
 	{
-		// 여기
-		switch (Result)
+		int SelectZone = _Player.GetCurZone();
+
+		switch (SelectZone)
 		{
-		case '2':
-			Result = FightZone.InPlayer(_Player);
+		case 0:
+			TownZone0.InPlayer(_Player);
 			break;
-		case '3':
-			Result = TownZone1.InPlayer(_Player);
+		case 1:
+			TownZone1.InPlayer(_Player);
+			break;
+		case 2:
+			FightZone.InPlayer(_Player);
 			break;
 		default:
-			Result = TownZone0.InPlayer(_Player);
 			break;
 		}
 	}
