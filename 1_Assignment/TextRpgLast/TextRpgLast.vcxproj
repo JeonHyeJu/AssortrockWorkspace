@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{adac5a93-943b-4584-b3f9-66ad5dc26f57}</ProjectGuid>
-    <RootNamespace>TextRPG003ClassFile</RootNamespace>
+    <ProjectGuid>{58a974e7-93f1-4486-88d3-4c0854c19308}</ProjectGuid>
+    <RootNamespace>TextRpgLast</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -119,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,38 +129,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="BlackSmith.cpp" />
-    <ClCompile Include="ContentsConst.cpp" />
     <ClCompile Include="FightUnit.cpp" />
     <ClCompile Include="FightZone.cpp" />
-    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StatusUnit.cpp" />
-    <ClCompile Include="TextRPG003ClassFile.cpp" />
-    <ClCompile Include="Town.cpp" />
+    <ClCompile Include="TextRpgCore.cpp" />
+    <ClCompile Include="TextRpgLast.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Town.cpp" />
     <ClCompile Include="Zone.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BlackSmith.h" />
-    <ClInclude Include="ContentsConst.h" />
-    <ClInclude Include="FightUnit.h" />
-    <ClInclude Include="FightZone.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="StatusUnit.h" />
-    <ClInclude Include="Town.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="Zone.h" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseSystem\BaseSystem.vcxproj">
       <Project>{0acebf45-8515-409b-99de-190cd392a6fc}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="BlackSmith.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="FightUnit.h" />
+    <ClInclude Include="FightZone.h" />
+    <ClInclude Include="Goblin.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Orc.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="StatusUnit.h" />
+    <ClInclude Include="TextRpgCore.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Town.h" />
+    <ClInclude Include="Zone.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,9 @@
 #include <conio.h>
 #include "Player.h"
 #include "BlackSmith.h"
+#include <iostream>
+#include "TextRpgCore.h"
+#include <BaseSystem/EngineDebug.h>
 
 UTown::UTown()
 	// : BS(*this)
@@ -11,9 +14,11 @@ UTown::UTown()
 }
 
 // 포인터나 레퍼런스는 무조건 8바이트 이기 때문에
-UZone* UTown::InPlayer(class UPlayer& _Player)
+UZone* UTown::InPlayer()
 {
 	InMsgPrint();
+
+	APlayer& _Player = TextRpgCore::GetPlayer();
 
 	while (true)
 	{
@@ -33,13 +38,21 @@ UZone* UTown::InPlayer(class UPlayer& _Player)
 		case '1':
 		{
 			// 블랙스미스에 지속적으로 정보를 유지시켜줘야 하는 .
-			BS.InPlayer(_Player);
+			BS.InPlayer();
 			break;
 		}
 		case '2':
 		{
-			UZone* NextZone = ConnectingProgress();
-			return NextZone;
+			if (false == IsConnectEmpty())
+			{
+				UZone* NextZone = ConnectingProgress();
+				return NextZone;
+			}
+			else {
+				MSGASSERT("연결된 지역이 하나도 없습니다");
+				return nullptr;
+			}
+
 			break;
 		}
 		case '0':

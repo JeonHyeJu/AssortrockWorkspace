@@ -1,6 +1,8 @@
 #include "Zone.h"
-#include <conio.h>
+#include <iostream>
 #include <BaseSystem/EngineDebug.h>
+#include <conio.h>
+
 
 void UZone::InMsgPrint()
 {
@@ -13,11 +15,11 @@ void UZone::ZonePrint()
 	std::cout << GetName() << "에 체류중.\n";
 }
 
-bool UZone::IsConnecting(UZone* _LinkZone)
+bool UZone::IsConnecting(UZone* _ConnectingZone)
 {
-	for (size_t i = 0; i < LINKZONEMAX; i++)
+	for (size_t i = 0; i < static_cast<int>(Enums::MAXS::ZONELINKMAX); i++)
 	{
-		if (_LinkZone == LinkZone[i])
+		if (_ConnectingZone == ConnectingZones[i])
 		{
 			return true;
 		}
@@ -58,11 +60,11 @@ bool UZone::Connecting(UZone* _LinkZone)
 		return false;
 	}
 
-	for (size_t i = 0; i < LINKZONEMAX; i++)
+	for (size_t i = 0; i < static_cast<int>(Enums::MAXS::ZONELINKMAX); i++)
 	{
-		if (nullptr == LinkZone[i])
+		if (nullptr == ConnectingZones[i])
 		{
-			LinkZone[i] = _LinkZone;
+			ConnectingZones[i] = _LinkZone;
 			SelectMax += 1;
 			// 무한 루프
 			// _LinkZone->Link(this);
@@ -76,6 +78,7 @@ bool UZone::Connecting(UZone* _LinkZone)
 
 UZone* UZone::ConnectingProgress()
 {
+
 	while (true)
 	{
 		ConnectingPrint();
@@ -88,7 +91,11 @@ UZone* UZone::ConnectingProgress()
 		// 1~2사이일때
 		if (Select >= 1 && Select <= SelectMax)
 		{
-			return LinkZone[Select - 1];
+			return ConnectingZones[Select - 1];
+		}
+		else if(Select <= (SelectMax + 1))
+		{
+			return this;
 		}
 	}
 
@@ -104,11 +111,11 @@ void UZone::ConnectingPrint()
 	// 1. 초보마을
 	// 2. 사냥터
 	// 3. 
-	for (size_t i = 0; i < LINKZONEMAX; i++)
+	for (size_t i = 0; i < static_cast<int>(Enums::MAXS::ZONELINKMAX); i++)
 	{
-		if (nullptr != LinkZone[i])
+		if (nullptr != ConnectingZones[i])
 		{
-			const char* NamePtr = LinkZone[i]->GetName();
+			const char* NamePtr = ConnectingZones[i]->GetName();
 			// char Number[100];
 			// itoa(StartIndex, Number, )
 			//%s char* 넣어주면 붙여서 출력을 해준다.
@@ -116,4 +123,6 @@ void UZone::ConnectingPrint()
 			StartIndex += 1;
 		}
 	}
+
+	printf_s("%d. %s로 돌아간다.\n", StartIndex, GetName());
 }

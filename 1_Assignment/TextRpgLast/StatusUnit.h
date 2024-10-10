@@ -1,15 +1,8 @@
 #pragma once
-#include "ContentsConst.h"
-#include "Object.h"
 
-class UStatusUnit : public UObject
+class UStatusUnit
 {
 public:
-	void TopLine();
-	void BotLine();
-
-	void StatusRender();
-
 	void SetHp(int _Value)
 	{
 		Hp = _Value;
@@ -31,27 +24,26 @@ public:
 		Gold = _Value;
 	}
 
-	int GetHp() 
+	int GetHp()
 	{
 		return Hp;
 	}
-	int GetMinAtt() 
-	{ 
-		return MinAtt; 
+	int GetMinAtt()
+	{
+		return MinAtt;
 	}
-	int GetMaxAtt() 
-	{ 
-		return MaxAtt; 
+	int GetMaxAtt()
+	{
+		return MaxAtt;
 	}
-	int GetSpeed() 
-	{ 
-		return Speed; 
+	int GetSpeed()
+	{
+		return Speed;
 	}
-	int GetGold() 
-	{ 
-		return Gold; 
+	int GetGold()
+	{
+		return Gold;
 	}
-
 
 protected:
 	int Hp = 100;
@@ -60,7 +52,6 @@ protected:
 	int Speed = 10;
 	int Gold = 0;
 
-	virtual void StatusTextPrint() {}
-
 private:
 };
+
