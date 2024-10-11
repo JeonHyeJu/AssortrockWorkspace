@@ -18,21 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="EngineDebug.h" />
-    <ClInclude Include="EngineFile.h" />
-    <ClInclude Include="EngineMath.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="EngineDebug.cpp" />
-    <ClCompile Include="EngineFile.cpp" />
-    <ClCompile Include="EngineMath.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0acebf45-8515-409b-99de-190cd392a6fc}</ProjectGuid>
-    <RootNamespace>BaseSystem</RootNamespace>
+    <ProjectGuid>{b7aeeb32-05a0-429e-b6b7-a80bada02d63}</ProjectGuid>
+    <RootNamespace>ConsoleGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -50,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -114,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +128,26 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ConsoleEngine.cpp" />
+    <ClCompile Include="ConsoleGame.cpp" />
+    <ClCompile Include="ConsoleImage.cpp" />
+    <ClCompile Include="ConsoleWindow.cpp" />
+    <ClCompile Include="Enums.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConsoleEngine.h" />
+    <ClInclude Include="ConsoleImage.h" />
+    <ClInclude Include="ConsoleWindow.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseSystem\BaseSystem.vcxproj">
+      <Project>{0acebf45-8515-409b-99de-190cd392a6fc}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
