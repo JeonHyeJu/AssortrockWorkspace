@@ -42,8 +42,21 @@ public:
 		Y += _Other.Y;
 		return *this;
 	}
+	
+	FIntPoint operator-(FIntPoint _Other)
+	{
+		FIntPoint Result; 
+		Result.X = X - _Other.X;
+		Result.Y = Y - _Other.Y;
+		return Result;
+	}
 
-
+	FIntPoint& operator-=(FIntPoint _Other)
+	{
+		X -= _Other.X;
+		Y -= _Other.Y;
+		return *this;
+	}
 };
 
 class EngineMath

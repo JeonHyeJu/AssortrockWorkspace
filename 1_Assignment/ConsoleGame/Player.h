@@ -19,11 +19,11 @@ public:
 	void BeginPlay();
 	void Tick();
 	void Render(ConsoleImage* _BackBuffer);
+	void SetActorLocation(FIntPoint _Pos);
 
 	void Move();
-	void SetBackScreenSize(const FSize& size);
-
-	void SetActorLocation(FIntPoint _Pos);
+	bool CanMove(const FIntPoint& _pos);
+	void SetBackScreenSize(const FSize& _size);
 
 private:
 	FIntPoint Pos;

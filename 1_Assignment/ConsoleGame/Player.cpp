@@ -12,9 +12,34 @@ void Player::Tick()
 	Move();
 }
 
-void Player::SetBackScreenSize(const FSize& size)
+void Player::Render(ConsoleImage* _BackBuffer)
 {
-	mMaxBackScreenSize = size;
+	// delete _BackBuffer;
+	_BackBuffer->Copy(Pos, PlayerImage);
+}
+
+void Player::SetActorLocation(FIntPoint _Pos)
+{
+	Pos = _Pos;
+}
+
+void Player::SetBackScreenSize(const FSize& _size)
+{
+	mMaxBackScreenSize = _size;
+}
+
+bool Player::CanMove(const FIntPoint& _pos)
+{
+	if (0 > _pos.X || _pos.X >= mMaxBackScreenSize.w)
+	{
+		return false;
+	}
+	if (0 > _pos.Y || _pos.Y >= mMaxBackScreenSize.h)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 void Player::Move()
@@ -48,47 +73,33 @@ void Player::Move()
 			break;
 		}
 
+		FIntPoint futurePos = Pos;
+		switch (Dir)
+		{
+		case Enums::GAMEDIR::LEFT:
+			futurePos += FIntPoint::LEFT;
+			break;
+		case Enums::GAMEDIR::RIGHT:
+			futurePos += FIntPoint::RIGHT;
+			break;
+		case Enums::GAMEDIR::UP:
+			futurePos += FIntPoint::UP;
+			break;
+		case Enums::GAMEDIR::DOWN:
+			futurePos += FIntPoint::DOWN;
+			break;
+		default:
+			break;
+		}
+
+		int imgHalfW = PlayerImage.GetImageSizeX() / 2;
+		int imgHalfH = PlayerImage.GetImageSizeY() / 2;
+		futurePos -= FIntPoint{ imgHalfW , imgHalfH };
+
+		bool canMove = CanMove(futurePos);
+		if (canMove)
+		{
+			SetActorLocation(futurePos);
+		}
 	}
-
-	FIntPoint futurePos = Pos;
-
-	switch (Dir)
-	{
-	case Enums::GAMEDIR::LEFT:
-		futurePos += FIntPoint::LEFT;
-		break;
-	case Enums::GAMEDIR::RIGHT:
-		futurePos += FIntPoint::RIGHT;
-		break;
-	case Enums::GAMEDIR::UP:
-		futurePos += FIntPoint::UP;
-		break;
-	case Enums::GAMEDIR::DOWN:
-		futurePos += FIntPoint::DOWN;
-		break;
-	default:
-		break;
-	}
-
-	if (0 > futurePos.X || futurePos.X >= mMaxBackScreenSize.w)
-	{
-		return;
-	}
-	if (0 > futurePos.Y || futurePos.Y >= mMaxBackScreenSize.h)
-	{
-		return;
-	}
-
-	Pos = futurePos;
-}
-
-void Player::Render(ConsoleImage* _BackBuffer)
-{
-	// delete _BackBuffer;
-	_BackBuffer->Copy(Pos, PlayerImage);
-}
-
-void Player::SetActorLocation(FIntPoint _Pos)
-{
-	Pos = _Pos;
 }
