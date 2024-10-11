@@ -7,9 +7,9 @@ void Player::BeginPlay()
 	PlayerImage.Create({2, 2}, '@');
 }
 
-void Player::Tick()
+bool Player::Tick()
 {
-	Move();
+	return Move();
 }
 
 void Player::Render(ConsoleImage* _BackBuffer)
@@ -47,7 +47,7 @@ bool Player::CanMove(const FIntPoint& _pos)
 	return true;
 }
 
-void Player::Move()
+bool Player::Move()
 {
 	int Value = _kbhit();
 	if (Value != 0)
@@ -73,6 +73,9 @@ void Player::Move()
 		case 's':
 			Dir = Enums::GAMEDIR::DOWN;
 			break;
+		case 'Q':
+		case 'q':
+			return true;
 		default:
 			break;
 		}
@@ -102,4 +105,6 @@ void Player::Move()
 			SetActorLocation(futurePos);
 		}
 	}
+
+	return false;
 }

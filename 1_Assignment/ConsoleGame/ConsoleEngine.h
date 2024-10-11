@@ -18,7 +18,7 @@ private:
 	// 2번 실행되지 않습니다.
 	void BeginPlay(); // 움직인다.
 
-	void Tick(); // 움직인다.
+	bool Tick(); // 움직인다.
 	void Render(); // 그린다.
 };
 

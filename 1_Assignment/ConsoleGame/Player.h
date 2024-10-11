@@ -17,11 +17,11 @@ class Player
 {
 public:
 	void BeginPlay();
-	void Tick();
+	bool Tick();
 	void Render(ConsoleImage* _BackBuffer);
 	void SetActorLocation(FIntPoint _Pos);
 
-	void Move();
+	bool Move();
 	bool CanMove(const FIntPoint& _pos);
 	void SetBackScreenSize(const FSize& _size);
 

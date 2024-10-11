@@ -14,10 +14,16 @@ void ConsoleEngine::Start()
 
 	while (true)
 	{
-		Engine.Tick();
+		bool isClose = Engine.Tick();
 		Engine.Render();
 		// 프로그램 250
 		// 1000이 1초입니다.
+
+		if (isClose)
+		{
+			break;
+		}
+
 		Sleep(250);
 	}
 	
@@ -32,9 +38,9 @@ void ConsoleEngine::BeginPlay()
 	NewPlayer.SetBackScreenSize(Window.GetScreenSize());
 }
 
-void ConsoleEngine::Tick()
+bool ConsoleEngine::Tick()
 {
-	NewPlayer.Tick();
+	return NewPlayer.Tick();
 }
 
 void ConsoleEngine::Render()
