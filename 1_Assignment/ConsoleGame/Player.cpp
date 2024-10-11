@@ -4,7 +4,7 @@
 
 void Player::BeginPlay()
 {
-	PlayerImage.Create({1, 1}, '@');
+	PlayerImage.Create({2, 2}, '@');
 }
 
 void Player::Tick()
@@ -30,11 +30,16 @@ void Player::SetBackScreenSize(const FSize& _size)
 
 bool Player::CanMove(const FIntPoint& _pos)
 {
-	if (0 > _pos.X || _pos.X >= mMaxBackScreenSize.w)
+	int imgHalfW = PlayerImage.GetImageSizeX() / 2;
+	int imgHalfH = PlayerImage.GetImageSizeY() / 2;
+	int realLimitW = mMaxBackScreenSize.w - imgHalfW;
+	int realLimitH = mMaxBackScreenSize.h - imgHalfH;
+
+	if (0 > _pos.X || _pos.X >= realLimitW)
 	{
 		return false;
 	}
-	if (0 > _pos.Y || _pos.Y >= mMaxBackScreenSize.h)
+	if (0 > _pos.Y || _pos.Y >= realLimitH)
 	{
 		return false;
 	}
@@ -45,10 +50,9 @@ bool Player::CanMove(const FIntPoint& _pos)
 void Player::Move()
 {
 	int Value = _kbhit();
-	Enums::GAMEDIR Dir = Enums::GAMEDIR::NONE;
-
 	if (Value != 0)
 	{
+		Enums::GAMEDIR Dir = Enums::GAMEDIR::NONE;
 		int Select = _getch();
 
 		switch (Select)
@@ -91,10 +95,6 @@ void Player::Move()
 		default:
 			break;
 		}
-
-		int imgHalfW = PlayerImage.GetImageSizeX() / 2;
-		int imgHalfH = PlayerImage.GetImageSizeY() / 2;
-		futurePos -= FIntPoint{ imgHalfW , imgHalfH };
 
 		bool canMove = CanMove(futurePos);
 		if (canMove)
