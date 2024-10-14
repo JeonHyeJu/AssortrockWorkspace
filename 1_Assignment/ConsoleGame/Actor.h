@@ -13,6 +13,7 @@ public:
 
 	void Render(ConsoleImage* _BackBuffer);
 
+	FIntPoint GetActorLocation() const;
 	void SetActorLocation(FIntPoint _Pos);
 
 	void AddActorLocation(FIntPoint _Pos);

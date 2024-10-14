@@ -23,13 +23,11 @@ void Player::Tick()
 
 	// static은 전역이니까 객체가 필요없다.
 	ConsoleEngine::GetWindow();
-	ConsoleEngine::GetWindowSize();
+	FIntPoint winSize = ConsoleEngine::GetWindowSize();
 
 	// 남에 코드 안건드리고 
 	GlobalValue::WindowPtr;
 	GlobalValue::WindowSize;
-
-	
 
 	int Value = _kbhit();
 	Enums::GAMEDIR Dir = Enums::GAMEDIR::NONE;
@@ -59,11 +57,11 @@ void Player::Tick()
 		case 'z':
 		{
 			Bullet* NewBullet = ConsoleEngine::GetEngine().SpawnActor<Bullet>();
-
-			// 1. 총알이 플레이어 위치에 나오게 만드세요
-			// 2. 총알이 위쪽으로 올라가게 만드세요.
-			// NewBullet->SetActorLocation();
-
+			FIntPoint playerPos = GetActorLocation();
+			if (playerPos.Y < (winSize.Y - 1))
+			{
+				NewBullet->SetActorLocation(playerPos);
+			}
 			break;
 		}
 		default:

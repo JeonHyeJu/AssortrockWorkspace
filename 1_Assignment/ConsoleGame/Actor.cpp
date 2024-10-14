@@ -14,6 +14,11 @@ void AActor::Render(ConsoleImage* _BackBuffer)
 	_BackBuffer->Copy(Pos, RenderImage);
 }
 
+FIntPoint AActor::GetActorLocation() const
+{
+	return Pos;
+}
+
 void AActor::SetActorLocation(FIntPoint _Pos)
 {
 	Pos = _Pos;
