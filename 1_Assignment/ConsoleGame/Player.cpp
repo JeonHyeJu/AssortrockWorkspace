@@ -4,6 +4,12 @@
 #include "GlobalValue.h"
 #include "ConsoleEngine.h"
 
+
+Player::Player()
+{
+	setActorType(ActorType::Player);
+}
+
 void Player::BeginPlay()
 {
 	Super::BeginPlay();

@@ -17,6 +17,7 @@
 class Player : public AActor
 {
 public:
+	Player();
 	void BeginPlay() override;
 	void Tick() override;
 

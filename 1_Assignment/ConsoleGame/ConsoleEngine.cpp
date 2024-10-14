@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include "GlobalValue.h"
 #include "Actor.h"
+#include <typeinfo>
 
 // ConsoleEngine* Inst = new ConsoleEngine();
 // ConsoleEngine* Inst = nullptr;
@@ -46,6 +47,7 @@ void ConsoleEngine::Start()
 	{
 		Engine.Tick();
 		Engine.Render();
+		Engine.Collide();
 		// 프로그램 250
 		// 1000이 1초입니다.
 		Sleep(250);
@@ -66,6 +68,7 @@ void ConsoleEngine::BeginPlay()
 	Window.SetScreenSize(WindowSize);
 
 	Player* NewPlayer = SpawnActor<Player>();
+	Monster* NewMonster = SpawnActor<Monster>();
 }
 
 void ConsoleEngine::Tick()
@@ -73,6 +76,35 @@ void ConsoleEngine::Tick()
 	for (size_t i = 0; i < AllActorVector.size(); i++)
 	{
 		AllActorVector[i]->Tick();
+	}
+}
+
+void ConsoleEngine::Collide()
+{
+	for (int i = 0; i < AllActorVector.size()-1; i++) {
+		ActorType prevActorType = AllActorVector[i]->getActorType();
+		ActorType nextActorType = AllActorVector[i+1]->getActorType();
+		int monsterIdx = -1;
+
+		if (prevActorType == ActorType::Monster && nextActorType == ActorType::Bullet)
+		{
+			monsterIdx = i;
+		}
+		else if (prevActorType == ActorType::Bullet && nextActorType == ActorType::Monster)
+		{
+			monsterIdx = i+1;
+		}
+
+		if (monsterIdx != -1)
+		{
+			FIntPoint prevActorLoc = AllActorVector[i]->GetActorLocation();
+			FIntPoint nextActorLoc = AllActorVector[i + 1]->GetActorLocation();
+
+			if (prevActorLoc == nextActorLoc)
+			{
+				DestroyActor(monsterIdx);
+			}
+		}
 	}
 }
 
@@ -87,4 +119,9 @@ void ConsoleEngine::Render()
 	}
 
 	Window.ScreenRender();
+}
+
+void ConsoleEngine::DestroyActor(int _idx)
+{
+	AllActorVector.Delete(_idx);
 }

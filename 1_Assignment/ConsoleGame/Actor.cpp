@@ -28,3 +28,13 @@ void AActor::AddActorLocation(FIntPoint _Dir)
 {
 	Pos += _Dir;
 }
+
+void AActor::setActorType(const ActorType& _actorType)
+{
+	mActorType = _actorType;
+}
+
+const ActorType& AActor::getActorType() const
+{
+	return mActorType;
+}

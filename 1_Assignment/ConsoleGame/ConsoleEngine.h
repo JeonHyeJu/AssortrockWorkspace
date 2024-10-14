@@ -27,15 +27,16 @@ public:
 		return *MainEngine;
 	}
 
-	template<typename ActorType>
-	ActorType* SpawnActor()
+	template<typename T>
+	T* SpawnActor()
 	{
-		ActorType* NewActor = new ActorType();
+		T* NewActor = new T();
 		AllActorVector.push_back(NewActor);
-		// 비긴플레이도 여기서 실행시켜준다.
 		NewActor->BeginPlay();
 		return NewActor;
 	}
+	
+	void DestroyActor(int _idx);
 
 	//AActor* SpawnBullet()
 	//{
@@ -88,5 +89,6 @@ private:
 	void BeginPlay(); // 움직인다.
 	void Tick(); // 움직인다.
 	void Render(); // 그린다.
+	void Collide();
 };
 

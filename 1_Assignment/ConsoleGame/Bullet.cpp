@@ -1,6 +1,11 @@
 #include "Bullet.h"
 #include "ConsoleEngine.h"
 
+Bullet::Bullet()
+{
+	setActorType(ActorType::Bullet);
+}
+
 void Bullet::BeginPlay()
 {
 	Super::BeginPlay();
