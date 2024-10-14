@@ -49,8 +49,6 @@ public:
 	{
 		return BackBuffer;
 	}
-	
-	FSize GetScreenSize();
 
 private:
 	int FrameDelay = 250;

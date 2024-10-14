@@ -129,18 +129,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorVector.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="ConsoleEngine.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
     <ClCompile Include="ConsoleImage.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
     <ClCompile Include="Enums.cpp" />
+    <ClCompile Include="GlobalValue.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorVector.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="ConsoleEngine.h" />
     <ClInclude Include="ConsoleImage.h" />
     <ClInclude Include="ConsoleWindow.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="GlobalValue.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>

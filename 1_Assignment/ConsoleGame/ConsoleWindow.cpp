@@ -37,10 +37,3 @@ void UConsoleWindow::ScreenRender()
 		printf_s("\n");
 	}
 }
-
-FSize UConsoleWindow::GetScreenSize()
-{
-	int w = BackBuffer.GetImageSizeX();
-	int h = BackBuffer.GetImageSizeY();
-	return FSize{ w, h };
-}

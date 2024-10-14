@@ -9,6 +9,17 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="Enums.cpp" />
+    <ClCompile Include="GlobalValue.cpp" />
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleWindow.h" />
@@ -18,10 +29,27 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="GlobalValue.h" />
+    <ClInclude Include="Bullet.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorVector.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
       <UniqueIdentifier>{4fe47981-129a-4918-b656-7aec5a70df32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{5d85b96f-9644-4717-a9a7-1322ce63c392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{907118d2-e939-41cc-adc7-ae3d5c9f6774}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
