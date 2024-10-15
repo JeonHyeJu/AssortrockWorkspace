@@ -140,6 +140,7 @@
     <ClCompile Include="GlobalValue.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="GlobalValue.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseSystem\BaseSystem.vcxproj">

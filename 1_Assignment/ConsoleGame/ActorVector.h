@@ -32,35 +32,6 @@ public:
         ++DataSize;
 	}
 
-    void Delete(int _idx)
-    {
-        int newSize = DataSize - 1;
-        
-        if (newSize == 0) {
-            return;
-        }
-
-        DataType* PrevValues = Values;
-        Values = new DataType[newSize];
-
-        int newIdx = 0;
-        for (size_t i = 0; i < DataSize; i++)
-        {
-            if (i != _idx && newIdx < newSize)
-            {
-                Values[newIdx++] = PrevValues[i];
-            }
-        }
-
-        if (nullptr != PrevValues)
-        {
-            delete[] PrevValues;
-            PrevValues = nullptr;
-        }
-
-        DataSize = newSize;
-    }
-
     AActor* operator[](int _Index)
     {
         return Values[_Index];

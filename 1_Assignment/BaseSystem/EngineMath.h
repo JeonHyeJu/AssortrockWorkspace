@@ -35,15 +35,6 @@ public:
 		Y += _Other.Y;
 		return *this;
 	}
-	
-	bool operator==(const FIntPoint& _Other)
-	{
-		if (X == _Other.X && Y == _Other.Y)
-		{
-			return true;
-		}
-		return false;
-	}
 
 
 };

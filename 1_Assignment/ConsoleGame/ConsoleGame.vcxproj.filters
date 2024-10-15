@@ -20,6 +20,7 @@
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="ActorVector.cpp" />
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleWindow.h" />
@@ -40,6 +41,7 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="ActorVector.h" />
+    <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

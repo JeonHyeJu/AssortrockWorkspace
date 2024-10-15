@@ -1,22 +1,29 @@
 #include "Actor.h"
+#include "Renderer.h"
 
 
 void AActor::BeginPlay()
 {
-
 }
+
 void AActor::Tick()
 {
 
 }
-void AActor::Render(ConsoleImage* _BackBuffer)
+
+Renderer* AActor::CreateDefaultSubObject()
 {
-	_BackBuffer->Copy(Pos, RenderImage);
+	ImageRenderer = new Renderer();
+	return ImageRenderer;
 }
 
-FIntPoint AActor::GetActorLocation() const
+void AActor::Render(ConsoleImage* _BackBuffer)
 {
-	return Pos;
+	if (nullptr == ImageRenderer)
+	{
+		return;
+	}
+	_BackBuffer->Copy(Pos, ImageRenderer->RenderImage);
 }
 
 void AActor::SetActorLocation(FIntPoint _Pos)
@@ -27,14 +34,4 @@ void AActor::SetActorLocation(FIntPoint _Pos)
 void AActor::AddActorLocation(FIntPoint _Dir)
 {
 	Pos += _Dir;
-}
-
-void AActor::setActorType(const ActorType& _actorType)
-{
-	mActorType = _actorType;
-}
-
-const ActorType& AActor::getActorType() const
-{
-	return mActorType;
 }

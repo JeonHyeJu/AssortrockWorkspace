@@ -13,9 +13,3 @@ public:
 	};
 };
 
-enum class ActorType
-{
-	Player,
-	Monster,
-	Bullet
-};

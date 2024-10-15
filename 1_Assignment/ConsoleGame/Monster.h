@@ -4,8 +4,10 @@
 class Monster : public AActor
 {
 public:
-	Monster();
 	void BeginPlay() override;
 	void Tick() override;
+
+private:
+	bool IsCrahsed();
 };
 

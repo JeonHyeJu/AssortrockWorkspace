@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "GlobalValue.h"
 #include "Actor.h"
-#include <typeinfo>
+#include "Monster.h"
 
 // ConsoleEngine* Inst = new ConsoleEngine();
 // ConsoleEngine* Inst = nullptr;
@@ -43,13 +43,14 @@ void ConsoleEngine::Start()
 
 	Engine.BeginPlay();
 
+	// 4 프레임
+	// 프레임이 돕니다.
+	// Tick은 반복실행 됩니다.
 	while (true)
 	{
 		Engine.Tick();
 		Engine.Render();
-		Engine.Collide();
 		// 프로그램 250
-		// 1000이 1초입니다.
 		Sleep(250);
 
 	}
@@ -67,44 +68,26 @@ void ConsoleEngine::BeginPlay()
 
 	Window.SetScreenSize(WindowSize);
 
+	// 컨텐츠 부분이 엔진을 침투하고 있다.
 	Player* NewPlayer = SpawnActor<Player>();
+
 	Monster* NewMonster = SpawnActor<Monster>();
+	NewMonster->SetActorLocation({1, 1});
+	
 }
 
 void ConsoleEngine::Tick()
 {
+	// 다형성과 업캐스팅
+	// ActorVector 
+	// 모든 화면에 그리는기능은 일반적으로 본기능이 아니야.
+	// 행동한다 본기능이다.
+	// 랜더링과 로직은 분리해서 생각해야 한다.
+	// 대부분의 게임엔진이 Actor Renderer를 분리시킵니다.
+
 	for (size_t i = 0; i < AllActorVector.size(); i++)
 	{
 		AllActorVector[i]->Tick();
-	}
-}
-
-void ConsoleEngine::Collide()
-{
-	for (int i = 0; i < AllActorVector.size()-1; i++) {
-		ActorType prevActorType = AllActorVector[i]->getActorType();
-		ActorType nextActorType = AllActorVector[i+1]->getActorType();
-		int monsterIdx = -1;
-
-		if (prevActorType == ActorType::Monster && nextActorType == ActorType::Bullet)
-		{
-			monsterIdx = i;
-		}
-		else if (prevActorType == ActorType::Bullet && nextActorType == ActorType::Monster)
-		{
-			monsterIdx = i+1;
-		}
-
-		if (monsterIdx != -1)
-		{
-			FIntPoint prevActorLoc = AllActorVector[i]->GetActorLocation();
-			FIntPoint nextActorLoc = AllActorVector[i + 1]->GetActorLocation();
-
-			if (prevActorLoc == nextActorLoc)
-			{
-				DestroyActor(monsterIdx);
-			}
-		}
 	}
 }
 
@@ -119,9 +102,4 @@ void ConsoleEngine::Render()
 	}
 
 	Window.ScreenRender();
-}
-
-void ConsoleEngine::DestroyActor(int _idx)
-{
-	AllActorVector.Delete(_idx);
 }

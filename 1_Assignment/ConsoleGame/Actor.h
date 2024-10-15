@@ -1,7 +1,7 @@
 #pragma once
 #include <BaseSystem/EngineMath.h>
 #include "ConsoleImage.h"
-#include "Enums.h"
+
 
 class AActor
 {
@@ -13,19 +13,27 @@ public:
 
 	void Render(ConsoleImage* _BackBuffer);
 
-	FIntPoint GetActorLocation() const;
 	void SetActorLocation(FIntPoint _Pos);
+
 	void AddActorLocation(FIntPoint _Pos);
 
-	void setActorType(const ActorType& _actorType);
-	const ActorType& getActorType() const;
+	FIntPoint GetActorLocation() const
+	{
+		return Pos;
+	}
+
+	class Renderer* CreateDefaultSubObject();
+
 
 protected:
-	ConsoleImage RenderImage;
+	// ConsoleImage RenderImage;
+	// 값형으로 만들수 없다.
+	// 그려져야 하면 랜더러를 만들고
+	// 안그려져야하면 안만들면 된다.
 
 private:
+	class Renderer* ImageRenderer;
 	FIntPoint Pos;
-	ActorType mActorType;
 	// 동적할당 할거냐 말거냐?
 };
 

@@ -1,26 +1,20 @@
 #include "Bullet.h"
-#include "ConsoleEngine.h"
+#include "Renderer.h"
 
-Bullet::Bullet()
-{
-	setActorType(ActorType::Bullet);
-}
 
 void Bullet::BeginPlay()
 {
 	Super::BeginPlay();
-	RenderImage.Create({ 1, 1 }, 'I');
+
+	// 언리얼은 컴포넌트구조가 아니다.
+	// 한번 액터에 랜더러(컴포넌트)가 만들어지고 나면 
+	// 한번만들어진 랜더러(컴포넌트)는 지울수 없습니다.
+	Renderer* Render = CreateDefaultSubObject();
+	Render->RenderImage.Create({ 1, 1 }, 'I');
 }
 
 void Bullet::Tick()
 {
 	Super::Tick();
-
-	FIntPoint winSize = ConsoleEngine::GetWindowSize();
-	FIntPoint pos = GetActorLocation();
-
-	if ((pos.X >= 0 && pos.X < winSize.X) && (pos.Y >= 0 && pos.Y < winSize.Y))
-	{
-		SetActorLocation(pos + FIntPoint::UP);
-	}
+	AddActorLocation(FIntPoint::UP);
 }
