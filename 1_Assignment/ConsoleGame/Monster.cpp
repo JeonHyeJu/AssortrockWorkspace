@@ -1,6 +1,8 @@
 #include "Monster.h"
 #include "Renderer.h"
 #include "Player.h"
+#include <iostream>
+#include <string>
 
 void Monster::BeginPlay()
 {
@@ -45,6 +47,8 @@ bool Monster::IsCrahsed()
 	FIntPoint monsterPos = GetActorLocation();
 	Player* player = Player::GetInstance();
 	ActorVector bullets = player->GetBulletVector();
+	int s = bullets.size();
+	std::cout << std::string("size:") + std::to_string(s);
 
 	for (int i = 0; i < bullets.size(); i++)
 	{

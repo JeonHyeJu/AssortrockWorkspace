@@ -27,13 +27,27 @@ public:
 		return *MainEngine;
 	}
 
-	template<typename ActorType>
+	template <typename ActorType>
 	ActorType* SpawnActor()
 	{
 		ActorType* NewActor = new ActorType();
 		AllActorVector.push_back(NewActor);
 		// 비긴플레이도 여기서 실행시켜준다.
 		NewActor->BeginPlay();
+		return NewActor;
+	}
+
+	Player* SpawnPlayer()
+	{
+		static bool isFirst = true;
+		Player* NewActor = Player::GetInstance();
+
+		if (isFirst) {
+			isFirst = false;
+			AllActorVector.push_back(NewActor);
+			NewActor->BeginPlay();
+		}
+		
 		return NewActor;
 	}
 

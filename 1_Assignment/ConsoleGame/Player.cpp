@@ -7,7 +7,7 @@
 
 Player* Player::mInstance = nullptr;
 
-Player* Player::GetInstance()
+Player* const Player::GetInstance()
 {
 	if (!mInstance)
 	{

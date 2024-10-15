@@ -69,11 +69,9 @@ void ConsoleEngine::BeginPlay()
 	Window.SetScreenSize(WindowSize);
 
 	// 컨텐츠 부분이 엔진을 침투하고 있다.
-	Player* NewPlayer = SpawnActor<Player>();
-
+	Player* NewPlayer = SpawnPlayer();
 	Monster* NewMonster = SpawnActor<Monster>();
 	NewMonster->SetActorLocation({1, 1});
-	
 }
 
 void ConsoleEngine::Tick()
