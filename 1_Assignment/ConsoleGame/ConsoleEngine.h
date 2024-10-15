@@ -36,8 +36,9 @@ public:
 		NewActor->BeginPlay();
 		return NewActor;
 	}
-
-	Player* SpawnPlayer()
+	
+	template <>
+	Player* SpawnActor()
 	{
 		static bool isFirst = true;
 		Player* NewActor = Player::GetInstance();
