@@ -40,8 +40,8 @@ private:
 	ConsoleEngine();
 
 	static ConsoleEngine* MainEngine;
-	class UConsoleWindow* Window;
 
+	class UConsoleWindow* Window;
 	bool EngineActive = true;
 
 	// 전방선언도 안해줘도 된다.
@@ -62,3 +62,4 @@ public:
 	// 
 	virtual void UserBeginPlay(ConsoleEngine* _MainEngine) = 0;
 };
+

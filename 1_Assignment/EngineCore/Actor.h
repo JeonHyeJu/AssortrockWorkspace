@@ -29,9 +29,6 @@ public:
 		return ImageRenderer;
 	}
 
-	void SetIsMovable(bool _value);
-	bool GetIsMovable() const;
-	
 protected:
 	// ConsoleImage RenderImage;
 	// 값형으로 만들수 없다.
@@ -42,8 +39,6 @@ private:
 	class Renderer* ImageRenderer;
 	FIntPoint Pos;
 	// 동적할당 할거냐 말거냐?
-
-	bool mIsMovable = true;
 };
 
 typedef AActor Super;

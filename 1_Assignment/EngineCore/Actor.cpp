@@ -41,13 +41,3 @@ void AActor::AddActorLocation(FIntPoint _Dir)
 {
 	Pos += _Dir;
 }
-
-void AActor::SetIsMovable(bool _value)
-{
-	mIsMovable = _value;
-}
-
-bool AActor::GetIsMovable() const
-{
-	return mIsMovable;
-}

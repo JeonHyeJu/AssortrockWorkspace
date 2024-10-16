@@ -7,7 +7,6 @@
 // User
 #include "ConsoleWindow.h"
 #include "Actor.h"
-#include <iostream>
 
 ConsoleEngine* ConsoleEngine::MainEngine = nullptr;
 
@@ -15,6 +14,7 @@ ConsoleEngine::ConsoleEngine()
 {
 
 }
+
 
 // void ConsoleEngine::Start(void(*Ptr)(ConsoleEngine*))
 void ConsoleEngine::Start(class UserInit* _Init)
