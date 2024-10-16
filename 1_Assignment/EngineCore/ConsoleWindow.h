@@ -24,7 +24,7 @@ public:
 
 	void ScreenRender();
 
-	FIntPoint GetScreenSize() const
+	FIntPoint GetScreenSize()
 	{
 		return BackBuffer.GetImageSize();
 	}

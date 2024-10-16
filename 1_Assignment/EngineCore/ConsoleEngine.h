@@ -1,4 +1,7 @@
 #pragma once
+// 부담없이 하셔도 됩니다.
+// 나보다 한단계 상위의 프로젝트의 헤더를 사용하는것은.
+#include <EngineBase/EngineMath.h>
 #include <vector>
 
 class ConsoleEngine

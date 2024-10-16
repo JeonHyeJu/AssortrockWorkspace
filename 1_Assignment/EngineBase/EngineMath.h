@@ -29,6 +29,15 @@ public:
 		return Result;
 	}
 
+	FIntPoint operator/(int _Value) const
+	{
+		FIntPoint Result;
+		Result.X = X / _Value;
+		Result.Y = Y / _Value;
+		return Result;
+	}
+
+
 	bool operator==(FIntPoint _Other) const
 	{
 		return X == _Other.X && Y == _Other.Y;
