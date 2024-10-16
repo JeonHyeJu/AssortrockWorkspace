@@ -16,6 +16,7 @@ void Block::BeginPlay()
 
 	Renderer* Render = CreateDefaultSubObject();
 	Render->RenderImage.Create({ 1, 1 }, '@');
+	SetActorLocation({ 1, 0 });
 }
 
 void Block::Tick()
@@ -55,18 +56,21 @@ void Block::Tick()
 			break;
 		case 'S':
 		case 's':
-			if (blockLoc.Y < (winSize.Y - 1))
-			{
-				AddActorLocation(FIntPoint::DOWN);
-			}
-			else
 			{
 				FIntPoint loc = GetActorLocation();
-				Board::GetInstance()->AddPoint(loc);
+				bool canMove = Board::GetInstance()->canMove(loc);
 
-				SetActorLocation({0, 0});
+				if (blockLoc.Y < (winSize.Y - 1) && canMove)
+				{
+					AddActorLocation(FIntPoint::DOWN);
+				}
+				else
+				{
+					Board::GetInstance()->AddPoint(loc);
+					SetActorLocation({1, 0});
+				}
+				break;
 			}
-			break;
 		default:
 			break;
 		}

@@ -15,7 +15,10 @@ public:
 		return mInstance;
 	}
 
+	bool canMove(const FIntPoint& _point);
+
 private:
 	static Board* mInstance;
 	Renderer* pRender = nullptr;
+	std::vector<FIntPoint> mData;
 };
