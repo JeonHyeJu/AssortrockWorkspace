@@ -10,7 +10,7 @@ public:
 
 	static Board* GetInstance();
 	void AddPoint(const FIntPoint& point);
-	bool canMove(const FIntPoint& _point);
+	bool IsFilledLocation(const FIntPoint& _point);
 
 private:
 	static Board* mInstance;

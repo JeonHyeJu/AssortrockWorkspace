@@ -33,14 +33,14 @@ void Board::AddPoint(const FIntPoint& _point)
 	mData.push_back(_point);
 }
 
-bool Board::canMove(const FIntPoint& _point)
+bool Board::IsFilledLocation(const FIntPoint& _point)
 {
 	for (int i = 0; i < mData.size(); i++)
 	{
 		if (mData[i].X == _point.X && (mData[i].Y - 1) == _point.Y)
 		{
-			return false;
+			return true;
 		}
 	}
-	return true;
+	return false;
 }

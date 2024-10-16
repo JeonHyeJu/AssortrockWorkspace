@@ -22,6 +22,16 @@ void Block::Tick()
 	FIntPoint blockLoc = GetActorLocation();
 	FIntPoint winSize = ConsoleEngine::GetEngine().GetWindow()->GetScreenSize();
 
+	Board* pBoard = Board::GetInstance();
+	if (!pBoard) return;
+
+	bool isFilled = pBoard->IsFilledLocation(blockLoc);
+	if (blockLoc.Y >= (winSize.Y - 1) || isFilled)
+	{
+		AddBlockAndResetLoc(blockLoc);
+		return;
+	}
+
 	int Value = _kbhit();
 	if (Value != 0)
 	{
@@ -53,19 +63,13 @@ void Block::Tick()
 		case 'S':
 		case 's':
 			{
-				FIntPoint loc = GetActorLocation();
-				Board* pBoard = Board::GetInstance();
-				if (!pBoard) return;
-
-				bool canMove = pBoard->canMove(loc);
-				if (blockLoc.Y < (winSize.Y - 1) && canMove)
+				if (blockLoc.Y < (winSize.Y - 1))
 				{
 					AddActorLocation(FIntPoint::DOWN);
 				}
 				else
 				{
-					Board::GetInstance()->AddPoint(loc);
-					SetActorLocation({1, 0});
+					AddBlockAndResetLoc(blockLoc);
 				}
 				break;
 			}
@@ -77,3 +81,8 @@ void Block::Tick()
 	//AddActorLocation(FIntPoint::DOWN);
 }
 
+void Block::AddBlockAndResetLoc(const FIntPoint& _point)
+{
+	Board::GetInstance()->AddPoint(_point);
+	SetActorLocation({ 1, 0 });
+}
