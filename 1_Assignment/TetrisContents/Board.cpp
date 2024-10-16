@@ -1,7 +1,14 @@
 #include "Board.h"
+#include <EngineCore/ConsoleEngine.h>
+#include <EngineCore/ConsoleWindow.h>
 #include <EngineCore/Renderer.h>
 
 Board* Board::mInstance = nullptr;
+
+Board* Board::GetInstance()
+{
+	return mInstance;
+}
 
 void Board::BeginPlay()
 {

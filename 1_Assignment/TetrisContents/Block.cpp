@@ -58,8 +58,10 @@ void Block::Tick()
 		case 's':
 			{
 				FIntPoint loc = GetActorLocation();
-				bool canMove = Board::GetInstance()->canMove(loc);
+				Board* pBoard = Board::GetInstance();
+				if (!pBoard) return;
 
+				bool canMove = pBoard->canMove(loc);
 				if (blockLoc.Y < (winSize.Y - 1) && canMove)
 				{
 					AddActorLocation(FIntPoint::DOWN);

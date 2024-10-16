@@ -8,13 +8,8 @@ public:
 	void BeginPlay() override;
 	void Tick() override;
 
+	static Board* GetInstance();
 	void AddPoint(const FIntPoint& point);
-
-	static Board* GetInstance()
-	{
-		return mInstance;
-	}
-
 	bool canMove(const FIntPoint& _point);
 
 private:
