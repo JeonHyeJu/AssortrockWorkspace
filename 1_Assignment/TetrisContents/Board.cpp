@@ -14,14 +14,13 @@ void Board::BeginPlay()
 {
 	Super::BeginPlay();
 
+	FIntPoint winSize = ConsoleEngine::GetEngine().GetWindow()->GetScreenSize();
 	Renderer* Render = CreateDefaultSubObject();
-	Render->RenderImage.Create({ 3, 5 }, '*');
-
-	mData.reserve(3 * 5);	// TODO
-
+	Render->RenderImage.Create(winSize, '*');
 	pRender = Render;
 
-	Board::mInstance = this;
+	mData.reserve(winSize.X * winSize.Y);
+	mInstance = this;
 }
 
 void Board::Tick()
@@ -31,7 +30,6 @@ void Board::Tick()
 void Board::AddPoint(const FIntPoint& _point)
 {
 	pRender->RenderImage.SetPixel({ _point.X, _point.Y }, '@');
-
 	mData.push_back(_point);
 }
 

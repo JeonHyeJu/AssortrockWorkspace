@@ -6,10 +6,6 @@
 
 #include "Board.h"
 
-// Debug
-#include <iostream>
-#include <string>
-
 void Block::BeginPlay()
 {
 	Super::BeginPlay();
