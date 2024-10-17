@@ -42,7 +42,25 @@ public:
 
     ~UList()
     {
+        UListNode* node = Start;
+        while (node)
+        {
+            if (node->Prev)
+            {
+                delete node->Prev;
+                node->Prev = nullptr;
+            }
 
+            if (node->Next)
+            {
+                node = node->Next;
+            }
+            else
+            {
+                delete node;
+                node = nullptr;
+            }
+        }
     }
 
     // push_back의 역개념함수
