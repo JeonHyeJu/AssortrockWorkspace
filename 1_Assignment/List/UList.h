@@ -35,8 +35,6 @@ public:
         // 더미노드라고 합니다.
         Start = new UListNode();
         End = new UListNode();
-        Start->Data = -1;
-        End->Data = -1;
 
         Start->Next = End;
         End->Prev = Start;
