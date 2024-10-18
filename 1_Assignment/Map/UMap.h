@@ -440,20 +440,20 @@ public:
 			}
 
 			UMapNode* deleteNode = node;
-
-			node = node->Parent;
-			if (node)
+			UMapNode* parentNode = node->Parent;
+			if (parentNode)
 			{
-				if (node->LeftChild == deleteNode)
+				if (parentNode->LeftChild == deleteNode)
 				{
-					node->LeftChild = nullptr;
+					parentNode->LeftChild = nullptr;
 				}
 				else
 				{
-					node->RightChild = nullptr;
+					parentNode->RightChild = nullptr;
 				}
 			}
 
+			node = parentNode;
 			delete deleteNode;
 			deleteNode = nullptr;
 		}
