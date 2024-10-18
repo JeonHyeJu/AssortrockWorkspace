@@ -1,8 +1,10 @@
 #pragma once
 #include <assert.h>
-
+#include <map>
 
 typedef int DataType;
+
+std::map<int, int> temp;
 
 // 중단점이나 디버깅할때 그냥 자료형이 
 // 정해져 있는것이 보기가 더 편해서 이방법을 많이 사용했다.
