@@ -425,7 +425,7 @@ public:
 		}
 
 		UMapNode* node = Root;
-		while (node != nullptr)
+		while (node)
 		{
 			if (node->LeftChild)
 			{
