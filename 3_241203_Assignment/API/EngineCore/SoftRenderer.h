@@ -1,10 +1,11 @@
 #pragma once
 #include <EngineBase/EngineMath.h>
 #include "Renderer.h"
-
-
-// 액터의 위치와 이런건 전혀... 의미 없습니다
-// 
+#include <list>
+#include <vector>
+#include "VertexBaseMesTest.h"
+#include "CrossTest.h"
+#include "MatrixTest.h"
 
 // 설명 :
 class USoftRenderer : public URenderer
@@ -27,10 +28,12 @@ protected:
 private:
 	float Angle = 0.0f;
 	float Speed = 0.0f;
-
 	std::list<FTransform> SinG;
-
 	std::list<FTransform> CosG;
+	int Select;
 
+	VertexBaseMesTest VTest;
+	CrossTest CTest;
+	MatrixTest MatrixTest;
 };
 

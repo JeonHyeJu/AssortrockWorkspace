@@ -11,15 +11,13 @@ const float UEngineMath::PI2 = PI * 2.0f;
 const float UEngineMath::D2R = UEngineMath::PI / 180.0f;
 const float UEngineMath::R2D = 180.0f / UEngineMath::PI;
 
-const FVector FVector::ZERO = { 0.0f, 0.0f };
-const FVector FVector::LEFT = { -1.0f, 0.0f };
-const FVector FVector::RIGHT = { 1.0f, 0.0f };
-const FVector FVector::UP = { 0.0f, 1.0f };
-const FVector FVector::DOWN = { 0.0f, -1.0f };
-const FVector FVector::FORWARD = { 0.0f, 0.0f, 1.0f };
-const FVector FVector::BACK = { 0.0f, 0.0f , -1.0f };
+const FVector FVector::ZERO = { 0, 0 };
+const FVector FVector::LEFT = { -1, 0 };
+const FVector FVector::RIGHT = { 1, 0 };
+const FVector FVector::UP = { 0, -1 };
+const FVector FVector::DOWN = { 0, 1 };
 
-const FIntPoint FIntPoint::LEFT = { -1, 0 };
+const FIntPoint FIntPoint::LEFT = {-1, 0};
 const FIntPoint FIntPoint::RIGHT = { 1, 0 };
 const FIntPoint FIntPoint::UP = { 0, -1 };
 const FIntPoint FIntPoint::DOWN = { 0, 1 };
@@ -30,7 +28,7 @@ const UColor UColor::BLACK = { 0, 0, 0, 0 };
 
 FIntPoint FVector::ConvertToPoint() const
 {
-	return { iX(), iY() };
+	return {iX(), iY()};
 }
 
 
@@ -203,19 +201,6 @@ FVector FVector::operator*(const class FMatrix& _Matrix) const
 
 
 	return Result;
-}
-
-FVector& FVector::operator*=(const FMatrix& _Matrix)
-{
-	FVector Copy = *this;
-
-	this->X = Copy.X * _Matrix.Arr2D[0][0] + Copy.Y * _Matrix.Arr2D[1][0] + Copy.Z * _Matrix.Arr2D[2][0] + Copy.W * _Matrix.Arr2D[3][0];
-	this->Y = Copy.X * _Matrix.Arr2D[0][1] + Copy.Y * _Matrix.Arr2D[1][1] + Copy.Z * _Matrix.Arr2D[2][1] + Copy.W * _Matrix.Arr2D[3][1];
-	this->Z = Copy.X * _Matrix.Arr2D[0][2] + Copy.Y * _Matrix.Arr2D[1][2] + Copy.Z * _Matrix.Arr2D[2][2] + Copy.W * _Matrix.Arr2D[3][2];
-	this->W = Copy.X * _Matrix.Arr2D[0][3] + Copy.Y * _Matrix.Arr2D[1][3] + Copy.Z * _Matrix.Arr2D[2][3] + Copy.W * _Matrix.Arr2D[3][3];
-
-
-	return *this;
 }
 
 FMatrix FMatrix::operator*(const FMatrix& _Matrix)

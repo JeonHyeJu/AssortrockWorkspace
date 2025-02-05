@@ -83,6 +83,34 @@ void EduContentsCore::BeginPlay()
 		}
 	}
 
+
+	// 이미지로드
+	{
+	/*	UEngineDirectory Dir;
+		if (false == Dir.MoveParentToDirectory("Resources"))
+		{
+			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
+			return;
+		}
+
+		UEngineFile File = Dir.GetFile("Player_Right_Test.png");
+
+		UEngineFile MetaFile = Dir.GetFile("Player_Right_Test.png.meta");
+		MetaFile.FileOpen("rb");
+
+		UEngineSerializer Ser;
+		MetaFile.Read(Ser);
+
+		size_t Size = Ser.GetDataSize();
+
+		std::string Data = reinterpret_cast<const char*>(Ser.GetDataPtr());
+
+		int a = 0;*/
+
+		// 테스트 로드
+	}
+
+
 	// 사운드 로드
 	{
 		UEngineDirectory Dir;
@@ -131,10 +159,6 @@ void EduContentsCore::BeginPlay()
 		UImageManager::GetInst().LoadFolder(Dir.GetPathToString());
 
 	}
-
-
-	
-
 
 
 	UEngineAPICore::GetCore()->GetMainWindow().SetWindowTitle("EduWindow");

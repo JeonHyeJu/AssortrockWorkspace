@@ -46,6 +46,18 @@
     <ClInclude Include="Renderer.h">
       <Filter>Object\Actor\Component\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="VertexBaseMesTest.h">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstMesh.h">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossTest.h">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixTest.h">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -93,6 +105,18 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Object\Actor\Component\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="VertexBaseMesTest.cpp">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstMesh.cpp">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossTest.cpp">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixTest.cpp">
+      <Filter>Object\Actor\Component\Rendering\SoftRendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Object">
@@ -127,6 +151,9 @@
     </Filter>
     <Filter Include="Contents">
       <UniqueIdentifier>{9cf87540-4d5e-42b7-839d-c770087a1327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Actor\Component\Rendering\SoftRendering">
+      <UniqueIdentifier>{d757ca5a-ca6f-4082-9ca9-2452808aa0b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

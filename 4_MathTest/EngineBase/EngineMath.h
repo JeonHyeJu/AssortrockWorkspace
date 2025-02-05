@@ -68,13 +68,11 @@ public:
 	static const FVector RIGHT;
 	static const FVector UP;
 	static const FVector DOWN;
-	static const FVector FORWARD;
-	static const FVector BACK;
 
 public:
-	union
+	union 
 	{
-		struct
+		struct 
 		{
 			float X;
 			float Y;
@@ -152,7 +150,7 @@ public:
 		return Result;
 	}
 
-	static float Dot(const FVector& _Left, const FVector& _Right)
+	static float Dot(const FVector& _Left, const FVector& _Right) 
 	{
 		float LeftLen = _Left.Length();
 		float RightLen = _Right.Length();
@@ -180,7 +178,7 @@ public:
 		return AngleToVectorRad(_Angle * UEngineMath::D2R);
 	}
 
-
+	
 	static FVector Lerp(FVector _A, FVector _B, float _Alpha)
 	{
 		FVector Result;
@@ -272,7 +270,7 @@ public:
 		return;
 	}
 
-	FVector NormalizeReturn() const
+	FVector NormalizeReturn()
 	{
 		FVector Result = *this;
 		Result.Normalize();
@@ -380,7 +378,7 @@ public:
 	}
 
 	FVector operator*(const class FMatrix& _Matrix) const;
-	FVector& operator*=(const class FMatrix& _Matrix);
+
 
 	FVector& operator-=(const FVector& _Other)
 	{
@@ -403,7 +401,6 @@ public:
 		FVector Result;
 		Result.X = -X;
 		Result.Y = -Y;
-		Result.Z = -Z;
 		return Result;
 	}
 
@@ -492,8 +489,7 @@ class FMatrix
 public:
 	union
 	{
-		float Arr2D[4][4] = { 0, };
-		FVector ArrVector[4];
+		float Arr2D[4][4] = {0,};
 		float Arr1D[16];
 
 		struct
@@ -535,25 +531,24 @@ public:
 		Arr2D[3][3] = 1.0f;
 	}
 
-	FVector GetFoward()
+	FMatrix& operator*(int val)
 	{
-		FVector Dir = ArrVector[2];
-		Dir.Normalize();
-		return Dir;
-	}
+		Arr2D[0][0] *= val;
+		Arr2D[0][1] *= val;
+		Arr2D[0][2] *= val;
+		Arr2D[0][3] *= val;
 
-	FVector GetRight()
-	{
-		FVector Dir = ArrVector[0];
-		Dir.Normalize();
-		return Dir;
-	}
+		Arr2D[1][0] *= val;
+		Arr2D[1][1] *= val;
+		Arr2D[1][2] *= val;
+		Arr2D[1][3] *= val;
 
-	FVector GetUp()
-	{
-		FVector Dir = ArrVector[1];
-		Dir.Normalize();
-		return Dir;
+		Arr2D[2][0] *= val;
+		Arr2D[2][1] *= val;
+		Arr2D[2][2] *= val;
+		Arr2D[2][3] *= val;
+
+		return *this;
 	}
 
 	FMatrix operator*(const FMatrix& _Value);
@@ -571,183 +566,6 @@ public:
 		Arr2D[3][1] = _Value.Y;
 		Arr2D[3][2] = _Value.Z;
 	}
-
-	void RotationDeg(const FVector& _Angle)
-	{
-		FMatrix RotX;
-		FMatrix RotY;
-		FMatrix RotZ;
-
-		// 아래와 같이 만드는게 훨신더 빠르겠지만 안합니다.
-		/*Arr2D[1][1] = cosf(_Angle.X) * ;
-		Arr2D[1][2] = -sinf(_Angle.X);
-		Arr2D[2][1] = sinf(_Angle.X);
-		Arr2D[2][2] = cosf(_Angle.X) * cosf(_Angle.Y);*/
-
-		RotX.RotationXDeg(_Angle.X);
-		RotY.RotationYDeg(_Angle.Y);
-		RotZ.RotationZDeg(_Angle.Z);
-
-		// 순서를 바꿔줘야 할때가 있습니다.
-		// 짐벌락이라는 현상이 발생하기 때문에
-		// RotY * RotZ * RotX;
-		*this = RotX * RotY * RotZ;
-	}
-
-	void Transpose()
-	{
-		for (size_t y = 0; y < 4; y++)
-		{
-			for (size_t x = y; x < 4; x++)
-			{
-				float Swap = Arr2D[y][x];
-				Arr2D[y][x] = Arr2D[x][y];
-				Arr2D[x][y] = Swap;
-			}
-		}
-
-	}
-
-	// View행렬의 인자입니다.
-	void View(const FVector& _Pos, const FVector& _Dir, const FVector& _Up)
-	{
-		// _Pos 카메라가 어디서 바라보고 있나요?
-		// _Dir 어딜보고 있나요?
-		// _Up 바라보는 방향과 수직으로 직교하는 벡터를 넣어주세요.
-
-		// -90
-		FVector Forward = _Dir.NormalizeReturn();
-		FVector Up = _Up.NormalizeReturn();
-		FVector Right = FVector::Cross(Up, Forward);
-		Right.Normalize();
-
-
-		ArrVector[2] = Forward;
-		ArrVector[1] = Up;
-		ArrVector[0] = Right;
-
-		ArrVector[2].W = 0.0f;
-		ArrVector[1].W = 0.0f;
-		ArrVector[0].W = 0.0f;
-
-		// 나의 회전행렬 구했죠?
-		// 90 
-		Transpose();
-
-		FMatrix OrginRot = *this;
-
-		FVector NPos = -_Pos;
-
-		ArrVector[3].X = FVector::Dot(Right, NPos);
-		ArrVector[3].Y = FVector::Dot(Up, NPos);
-		ArrVector[3].Z = FVector::Dot(Forward, NPos);
-
-		FVector Move = ArrVector[3];
-		FVector OriginMove = NPos * OrginRot;
-
-		return;
-	}
-
-	// 여기서 왼손 오른 손 좌표계도 바꿀수 있습니다.
-	
-	// _Widht 너비와 <= 윈도우 크기 넣는게 일반적
-	// _Height 높의 화면을
-	// 
-	// 내 앞에있는 _Far거리 안에 있는 애들까지 보겠다.
-	// 내 앞에있는 _Near부터 보겠다. 
-
-	//                 
-	void OrthographicLH(float _Width, float _Height, float _Near, float _Far)
-	{
-		Identity();
-
-		// 1000;
-		// 250 * (2 / 1000);
-		// 크기를 바꾸는 행렬이다 
-		// 직교는 더더욱 
-		
-		//                      11      1      
-		float fRange = 1.0f / (_Far - _Near);
-
-		// [*][ ][ ][ ]
-		// [ ][*][ ][ ]
-		// [ ][ ][*][ ]
-		// [ ][ ][*][ ]
-
-		Arr2D[0][0] = 2.0f / _Width;
-		Arr2D[1][1] = 2.0f / _Height;
-		Arr2D[2][2] = fRange;
-
-		// Camera의 z와 near와 사이에 있는 존재들을 z -축으로 보내기 위해서 이다.
-		// 큰의미는 없다. 숫자가 너무 작어
-		Arr2D[3][2] = -fRange * _Near;
-		// 그만큼 앞으로 땡겨서 모니터에 딱 붙여주려고 하는것.
-		// 직교 투영은 -1~1사이의 값이 되게 만들어 줄겁니다.
-
-	}
-
-	// 인자중의 하나는 
-
-	// 화면의 크기를 정의하기 위한 _Width, _Height X
-	// 화면의 비율을 정의하기 위한 _Width, _Height O
-	// _FovAngle => x축에서 바라봤을대의 각도를 알려달라.
-	void PerspectiveFovDeg(float _FovAngle, float _Width, float _Height, float _Near, float _Far)
-	{
-		PerspectiveFovRad(_FovAngle * UEngineMath::D2R, _Width, _Height, _Near, _Far);
-	}
-
-	void PerspectiveFovRad(float _FovAngle, float _Width, float _Height, float _Near, float _Far)
-	{
-		Identity();
-
-		float ScreenRatio = _Width / _Height;
-		float DivFov = _FovAngle / 2.0f;
-
-		// / z를 해야하니까.
-		// / z를 하기 전까지의 값은 추출해 낼수 있다.
-		
-		Arr2D[2][3] = 1.0f;
-		Arr2D[3][3] = 0.0f;
-		
-		// x * 1.0f / (tanf(DivFov) * ScreenRatio) / z
-		Arr2D[0][0] = 1.0f / (tanf(DivFov) * ScreenRatio);
-		// y * 1.0f / (tanf(DivFov) * ScreenRatio)
-		Arr2D[1][1] = 1.0f / tanf(DivFov);
-		Arr2D;
-		// z값을 0, 1사이의 값으로 만드는 것이 목적이다.
-		// 여기에서 z * 가 되는 값이다.
-		Arr2D[2][2] = _Far / (_Far - _Near);
-		// 0~ 1사이의 값으로 만들수가 있나요?
-
-		Arr2D[3][2] = -(_Near * _Far) / (_Far - _Near);
-	}
-
-	// 화면 확대 -1~1사이의 값이 됐으니까
-	// +좌표축 변경 중점 변경
-	// 화면의 정중앙을 0,0으로 만듭니다
-	// Y축 반전도 여기서 합니다.
-	// 뷰포트는 directx에서는 내가 곱해줄 필요가 없다. 다이렉에 넣어주면 다이렉트가 자동으로 해주는 것이다.
-	// directx::viewportsetting(ViewPort_desc);
-
-	// 위치와 크기 양쪽영향을 주는 행렬이다.
-	// 그것조차도 내마음대로 정할수 있어.
-	
-	//                 1280          720        640           360            누가 앞에 나오고 누가 뒤에 나올거냐
-	void ViewPort(float _Width, float _Height, float _Left, float _Top, float _ZMin, float _ZMax)
-	{
-		Identity();
-		Arr2D[0][0] = _Width * 0.5f;
-		// Y축 반전
-		Arr2D[1][1] = -_Height * 0.5f;
-
-		// 화면 2~3뿌릴건데 그중에서 누가 앞에오고 뒤에오고를 결정하려면 
-		Arr2D[2][2] = _ZMax != 0.0f ? 1.0f : _ZMin / _ZMax;
-
-		Arr2D[3][0] = Arr2D[0][0] + _Left;
-		Arr2D[3][1] = -Arr2D[1][1] + _Top;
-		Arr2D[3][2] = _ZMax != 0.0f ? 1.0f : _ZMin / _ZMax;
-	}
-
 
 	void RotationXDeg(float _Angle)
 	{

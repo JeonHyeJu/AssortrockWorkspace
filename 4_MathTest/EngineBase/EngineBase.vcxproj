@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e912f146-a8ce-43f3-aa89-c50b132307f5}</ProjectGuid>
-    <RootNamespace>EngineCore</RootNamespace>
+    <ProjectGuid>{47e3aad8-cc6c-46c3-86c8-b7ca1a81da66}</ProjectGuid>
+    <RootNamespace>EngineBase</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,142 +151,109 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h">
+    <ClInclude Include="EngineDebug.h" />
+    <ClInclude Include="EngineDelegate.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="CrossTest.h">
+    <ClInclude Include="EngineDirectory.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="EngineCoreDebug.h">
+    <ClInclude Include="EngineFile.h" />
+    <ClInclude Include="EngineMath.h" />
+    <ClInclude Include="EnginePath.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="FirstMesh.h">
+    <ClInclude Include="EngineRandom.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="GameMode.h">
+    <ClInclude Include="EngineResources.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="EngineAPICore.h">
+    <ClInclude Include="EngineString.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MatrixTest.h" />
-    <ClInclude Include="PathFindAStar.h" />
-    <ClInclude Include="PreCompile.h" />
-    <ClInclude Include="Level.h">
+    <ClInclude Include="EngineTimer.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ImageManager.h">
+    <ClInclude Include="FSMStateManager.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="EngineSprite.h">
+    <ClInclude Include="PreCompile.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ActorComponent.h">
+    <ClInclude Include="Object.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="EngineSerializer.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SceneComponent.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SoftRenderer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="2DCollision.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="VertexBaseMesTest.h">
+    <ClInclude Include="TimeEvent.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp">
+    <ClCompile Include="EngineDebug.cpp" />
+    <ClCompile Include="EngineDelegate.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="CrossTest.cpp">
+    <ClCompile Include="EngineDirectory.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="EngineCoreDebug.cpp">
+    <ClCompile Include="EngineFile.cpp" />
+    <ClCompile Include="EngineMath.cpp" />
+    <ClCompile Include="EnginePath.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="FirstMesh.cpp">
+    <ClCompile Include="EngineRandom.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="GameMode.cpp">
+    <ClCompile Include="EngineResources.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="EngineAPICore.cpp">
+    <ClCompile Include="EngineString.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="MatrixTest.cpp" />
-    <ClCompile Include="PathFindAStar.cpp" />
+    <ClCompile Include="EngineTimer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FSMStateManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PreCompile.cpp">
+      <SubType>
+      </SubType>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
+    <ClCompile Include="Object.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ImageManager.cpp">
+    <ClCompile Include="EngineSerializer.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="EngineSprite.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="ActorComponent.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SceneComponent.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SoftRenderer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="2DCollision.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="VertexBaseMesTest.cpp">
+    <ClCompile Include="TimeEvent.cpp">
       <SubType>
       </SubType>
     </ClCompile>
